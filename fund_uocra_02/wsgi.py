@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fund_uocra_02.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fund_uocra_02.prod')
 
 application = get_wsgi_application()
