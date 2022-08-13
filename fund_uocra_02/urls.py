@@ -17,14 +17,22 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import Index
+from .views import Index, galeria, basic, full, sidebar_left, sidebar_right
+
+#ESTO LO AGREGUE DE ABI from .views import Index, galeria, basic, full, sidebar_left, sidebar_right 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Index, name = 'index'),
     path('noticia/', include ('apps.noticia.urls') ),
 #   path('usuario/', include ('apps.usuario.urls') ),
-#    path('comentario/', include ('apps.comentario.urls') ),
+#   path('comentario/', include ('apps.comentario.urls') ),
+# LO QUE SIGUE LO AGREGUE DE ABI
+    path('galeria/', galeria, name='galeria'),
+    path('basic/', basic, name='basic'),
+    path('full/', full, name='full'), 
+    path('left/', sidebar_left, name='left'),
+    path('right/', sidebar_right, name='right'),
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
 if settings.DEBUG:

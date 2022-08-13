@@ -11,11 +11,16 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+# ESTO LO AGREGUE DE ABI from django.urls import reverse_lazy
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 AUTH_USER_MODEL = 'usuario.Usuario'
+# EL LOGIN Y LOGOUT LO AGREGUE DE ABI
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -35,7 +40,15 @@ INSTALLED_APPS = [
     'apps.noticia',
     'apps.usuario',
     'apps.comentario',
+# LO QUE SIGUE LO AGREGUE DE ABI
+    "admin_interface",
+    "colorfield",
+    'crispy_forms',
+    'django.contrib.humanize',
 ]
+# EL CRISPY Y X_FRAME LO AGREGUE DE ABI
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  #Formularios con crispy
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
