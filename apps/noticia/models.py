@@ -1,4 +1,5 @@
 from django.db import models
+from ..usuario.models import Usuario
 
 # Create your models here.
 
@@ -9,6 +10,7 @@ class Categoria(models.Model):
         return self.nombre
 
 class Noticia(models.Model):
+    autor = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
     titulo = models.CharField(max_length=250, null=False)
     fecha = models.DateTimeField(auto_now_add=True)
     texto = models.TextField(null=True)

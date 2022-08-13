@@ -12,10 +12,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'fund_uocra_db',
-        'USSER': 'root'
-        'PASSWORD': 'root'
-        'HOST': 'localhost'
-        'PORT': ''
+        'USER': 'root',
+        'PASSWORD': 'Futuro.2022',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
