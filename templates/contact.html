@@ -1,4 +1,3 @@
-{% load bootstrap5 %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Fundación UOCRA - Index</title>
+  <title>ZenBlog Bootstrap Template - Contact</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -46,15 +45,15 @@
 
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-      <img src="static/logo.png" alt="">
-        <h1>Fundación UOCRA</h1>
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>ZenBlog</h1>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="single-post.html">Noticias</a></li>
-          <li class="dropdown"><a href="category.html"><span>Categorias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li><a href="index.html">Blog</a></li>
+          <li><a href="single-post.html">Single Post</a></li>
+          <li class="dropdown"><a href="category.html"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="search-result.html">Search Result</a></li>
               <li><a href="#">Drop Down 1</a></li>
@@ -73,9 +72,8 @@
             </ul>
           </li>
 
-          <li><a href="about.html">Acerca de Nosotros</a></li>
-          <li><a href="contact.html">Contáctanos</a></li>
-          <li><a href="acceder.html">Acceder</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -83,7 +81,6 @@
         <a href="#" class="mx-2"><span class="bi-facebook"></span></a>
         <a href="#" class="mx-2"><span class="bi-twitter"></span></a>
         <a href="#" class="mx-2"><span class="bi-instagram"></span></a>
-        <a href="#" class="mx-2"><span class="bi-youtube"></span></a>
 
         <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -103,11 +100,73 @@
 
   </header><!-- End Header -->
 
-  {% block contenido %}
-  <!--==========================
-           index.html
-   ============================-->
- {% endblock %}
+  <main id="main">
+    <section id="contact" class="contact mb-5">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5">
+            <h1 class="page-title">Contact us</h1>
+          </div>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-md-4">
+            <div class="info-item">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Address</h3>
+              <address>A108 Adam Street, NY 535022, USA</address>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-4">
+            <div class="info-item info-item-borders">
+              <i class="bi bi-phone"></i>
+              <h3>Phone Number</h3>
+              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-4">
+            <div class="info-item">
+              <i class="bi bi-envelope"></i>
+              <h3>Email</h3>
+              <p><a href="mailto:info@example.com">info@example.com</a></p>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+        <div class="form mt-5">
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div><!-- End Contact Form -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -153,7 +212,7 @@
             <ul class="footer-links footer-blog-entry list-unstyled">
               <li>
                 <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="static/assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
+                  <img src="assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
                     <span>5 Great Startup Tips for Female Founders</span>
@@ -163,7 +222,7 @@
 
               <li>
                 <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="static/assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
+                  <img src="assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
                     <span>What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</span>
@@ -173,7 +232,7 @@
 
               <li>
                 <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="static/assets/img/post-sq-3.jpg" alt="" class="img-fluid me-3">
+                  <img src="assets/img/post-sq-3.jpg" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
                     <span>Life Insurance And Pregnancy: A Working Mom’s Guide</span>
@@ -183,7 +242,7 @@
 
               <li>
                 <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="static/assets/img/post-sq-4.jpg" alt="" class="img-fluid me-3">
+                  <img src="assets/img/post-sq-4.jpg" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
                     <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
@@ -238,14 +297,14 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="static/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="static/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="static/assets/vendor/aos/aos.js"></script>
-  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="static/assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 

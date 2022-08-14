@@ -1,7 +1,9 @@
 asgiref==3.5.2
+beautifulsoup4==4.11.1
 dj-database-url==1.0.0
 Django==4.0.6
 django-admin-interface==0.19.2
+django-bootstrap-v5==1.0.11
 django-colorfield==0.7.2
 django-crispy-forms==1.14.0
 django-flat-responsive==2.0
@@ -12,6 +14,7 @@ mysqlclient==2.1.1
 Pillow==9.2.0
 psycopg2==2.9.3
 six==1.16.0
+soupsieve==2.3.2.post1
 sqlparse==0.4.2
 tzdata==2022.1
 whitenoise==6.2.0

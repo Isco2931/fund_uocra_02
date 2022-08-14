@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "colorfield",
     'crispy_forms',
     'django.contrib.humanize',
+# LO QUE SIGUE LO AGREGUE DE LA PLANTILLA DE FRAN
+    "bootstrap5",
 ]
 # EL CRISPY Y X_FRAME LO AGREGUE DE ABI
 CRISPY_TEMPLATE_PACK = 'bootstrap4'  #Formularios con crispy
