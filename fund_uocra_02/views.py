@@ -1,5 +1,6 @@
 from django.shortcuts import render #, redirect
 from django.views import View
+from django.urls import reverse
 #from django.contrib.auth.views import LoginView, LogoutView
 #from .forms import userForm, loginForm
 #from django.contrib.auth.views import LoginView
@@ -10,7 +11,7 @@ def Index(request):
 #HASTA ACÁ ESTA MI PROYECTO, LO SIGUIENTE ES La plantilla de fran
 
 def About(request):
-    return render(request, 'about.html')
+    return (render(request, 'about.html'))
 
 def Category(request):
     return render(request, 'category.html')

@@ -23,7 +23,8 @@ from .views import About, Category, Contact, Index, Search_Result, Single_Post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Index, name = 'index'),
+    path('', Index, name = 'inicio'),
+    path('index/', Index, name = 'index'),
     path('noticia/', include ('apps.noticia.urls') ),
 #   path('usuario/', include ('apps.usuario.urls') ),
 #   path('comentario/', include ('apps.comentario.urls') ),
