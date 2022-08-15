@@ -26,7 +26,7 @@ urlpatterns = [
     path('', Index, name = 'inicio'),
     path('index/', Index, name = 'index'),
     path('noticia/', include ('apps.noticia.urls') ),
-#   path('usuario/', include ('apps.usuario.urls') ),
+    path('ingresar/', include ('apps.usuario.urls'), name='ingresar'),
 #   path('comentario/', include ('apps.comentario.urls') ),
 # LO QUE SIGUE LO AGREGUE DE ABI
     path('about/', About, name='about'),

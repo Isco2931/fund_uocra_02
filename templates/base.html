@@ -6,10 +6,17 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Fundación UOCRA - Index</title>
+  <title>Fundación UOCRA</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Plantilla Login 
+  <meta name="viewport" content="width=device-width" />
+  <meta charset="UFT-8" />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="/static/usuario/styles.css" />
+  <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+-->
   <!-- Favicons -->
   <link href="/static/assets/img/favicon.png" rel="icon">
   <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -46,7 +53,7 @@
 
       <a href="index" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-      <img src="static/logo.png" alt="">
+      <img src="/static/logo.png" alt="">
         <h1>Fundación UOCRA</h1>
       </a>
 
@@ -75,7 +82,14 @@
 
           <li><a href="about">Acerca de Nosotros</a></li>
           <li><a href="contact">Contáctanos</a></li>
-          <li><a href="acceder">Acceder</a></li>
+          <li class="dropdown"><a href="ingresar"><span>Ingresar</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="ingresar/login/">Iniciar Sesión</a></li>
+              <li><a href="#">Registrarme</a></li>
+            </ul>
+        </li>
+
+
         </ul>
       </nav><!-- .navbar -->
 
