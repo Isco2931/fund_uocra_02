@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,9 +23,9 @@
 								<div class="card-front">
 									<div class="center-wrap">
 										<div class="section text-center">
-                                            <form method="post" action= "/ingresar/login/"> <!---->
+                                            <form method="post" class="my-class" action= "/ingresar/login/"> <!---->
                                                 {% csrf_token %}
-                                                    
+											    {{ my_formset|crispy }}
                                                 <h4 class="mb-4 pb-3">Ingresar</h4>
                                                 <div class="form-group">
                                                     <td>{{ form.username.label_tag }}</td>

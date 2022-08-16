@@ -37,5 +37,5 @@ def ListarNoticiaPorCategoria (request, categoria):
     context = {
         'noticia': noticia,
     }
-    return render(request, 'noticia/listarNoticia.html', context)
+    return render(request, 'category.html', context)
 
