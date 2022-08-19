@@ -43,4 +43,15 @@ def ListarNoticiaPorCategoria (request, categoria):
         'noticia': noticia,
     }
     return render(request, 'category.html', context)
+"""
+class ListarCategoria(ListView):
+    model = Categoria
+    template_name = 'noticia/listarCategoria.html'
 
+def ListarCategoria (request):
+    categoria = Categoria.objects.all()
+    context = {
+        'categoria': categoria,
+    }
+    return render(request, 'noticia/listarCategoria.html', context)
+"""
