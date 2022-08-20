@@ -10,12 +10,12 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Plantilla Login
+  <!-- Plantilla Login-->
   <meta name="viewport" content="width=device-width" />
   <meta charset="UFT-8" />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
   <link rel="stylesheet" href="/static/usuario/styles.css" />
-  <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'> -->
+  <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'> 
 
   <!-- Favicons -->
   <link href="/static/assets/img/favicon.png" rel="icon">
@@ -51,7 +51,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index" class="logo d-flex align-items-center">
+      <a href="{% url 'index' %}" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
       <img src="/static/logo-fundacion-uocra.png" alt="">
       <!-- Uncomment the line below if you also wish to use an a title name  
@@ -61,8 +61,13 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="{% url 'index' %}">Inicio</a></li>
-          <li class="dropdown"><a href="#"><span>Noticias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="/noticia/listarNoticia/"><span>Noticias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a class="dropdown-item" href="#">Categorias</a></li>    
+            </ul>
+          <!--
             
+            "PARA QUE EL DROPDOWN APAREZCA EL LISTADO DE CATEGORIAS DISPONIBLES"
           {% if categoria %}
             {% for c in categoria %}             
               <ul>
@@ -71,7 +76,7 @@
             {% endfor %}
           {% endif %}
           </li>
-
+        --> 
           <li><a href="{% url 'about' %}">Acerca de Nosotros</a></li>
           <li><a href="{% url 'contact' %}">Contáctanos</a></li>
           {% if user.is_authenticated %}<li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar Sesión</a></li>
@@ -79,7 +84,7 @@
             <li class="dropdown"><a href="#"><span>Mi cuenta</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>             
             <ul>
                 <li><a href="{% url 'apps.usuario:login' %}">Iniciar Sesión</a></li>
-                <li><a href="#">Registrarme</a></li>
+                <li><a href="/ingresar/registro/">Registrarme</a></li>
             </ul>
         </li>
           {%endif%}
@@ -156,16 +161,16 @@
           <div class="col-lg-4">
             <h3 class="footer-heading">About ZenBlog</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ab, perspiciatis beatae autem deleniti voluptate nulla a dolores, exercitationem eveniet libero laudantium recusandae officiis qui aliquid blanditiis omnis quae. Explicabo?</p>
-            <p><a href="about" class="footer-link-more">Learn More</a></p>
+            <p><a href="{% url 'about' %}" class="footer-link-more">Acerca de nosotros</a></p>
           </div>
           <div class="col-6 col-lg-2">
             <h3 class="footer-heading">Navigation</h3>
             <ul class="footer-links list-unstyled">
-              <li><a href="index"><i class="bi bi-chevron-right"></i> Home</a></li>
-              <li><a href="category"><i class="bi bi-chevron-right"></i> Categories</a></li>
-              <li><a href="single-post"><i class="bi bi-chevron-right"></i> Single Post</a></li>
-              <li><a href="about"><i class="bi bi-chevron-right"></i> About us</a></li>
-              <li><a href="contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+              <li><a href="{% url 'index' %}"><i class="bi bi-chevron-right"></i> Home</a></li>
+              <li><a href="{% url 'category' %}"><i class="bi bi-chevron-right"></i> Categories</a></li>
+              <li><a href="{% url 'single-post' %}"><i class="bi bi-chevron-right"></i> Single Post</a></li>
+              <li><a href="{% url 'about' %}"><i class="bi bi-chevron-right"></i> About us</a></li>
+              <li><a href="{% url 'contact' %}"><i class="bi bi-chevron-right"></i> Contact</a></li>
             </ul>
           </div>
           <div class="col-6 col-lg-2">
@@ -188,7 +193,7 @@
 
             <ul class="footer-links footer-blog-entry list-unstyled">
               <li>
-                <a href="single-post" class="d-flex align-items-center">
+                <a href="{% url 'single-post' %}" class="d-flex align-items-center">
                   <img src="/static/assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
