@@ -16,10 +16,11 @@
 								<div class="card-front">
 									<div class="center-wrap">-->
 										<div class="section text-center">
-                                            <form method="post" class="my-class" action= "/noticia/updateNoticia/"> <!---->
+                                            <form method="post" class="my-class" > <!---->
                                                 <h4 class="mb-4 pb-3">Modificar Noticia</h4>
 												{% csrf_token %}
 												{{form | crispy}}
+												
                                                 <!--
                                                 <div class="form-group">
                                                     {{form.as_p}}

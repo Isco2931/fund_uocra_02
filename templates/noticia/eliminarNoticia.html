@@ -16,9 +16,9 @@
 								<div class="card-front">
 									<div class="center-wrap">-->
 										<div class="section text-center">
-                                            <form method="post" class="my-class" action= "/noticia/eliminarNoticia/"> <!---->
+                                            <form method="post" class="my-class"> <!---->
                                                 <h4 class="mb-4 pb-3">Eliminar Noticia</h4>
-                                                <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar la publicación?</span></h6>
+                                                <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar la publicación: {{object.titulo}}?</span></h6>
                                                     <!--<h6 class="mb-0 pb-3">¿Esta seguro que desea eliminar la publicación? "{{ Noticia }}"</h6>-->
 												{% csrf_token %}
 												{{form | crispy}}

@@ -66,7 +66,7 @@ class UpdateNoticia(UpdateView):
     model = Noticia
     fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
     template_name = 'noticia/updateNoticia.html'
-    success_url = reverse_lazy('noticia/listarNoticia/')
+    success_url = reverse_lazy('Listar-Noticia')
 
 
 class DeleteNoticia(DeleteView):
@@ -77,3 +77,16 @@ class DeleteNoticia(DeleteView):
 class DetailNoticia(DetailView):
     model = Noticia
     template_name = 'noticia/detailNoticia.html'
+"""
+NO LA PUEDO USAR PORQUE LAS NOTICIAS TIENEN ESPACIOS Y EN LA URL NO RECONOCE LOS ESPACIOS POR ENDE NO MATCHEA CON LAS NOTICIAS
+def DetailNoticia (request, noticia):
+    noticia2 = Noticia.objects.filter(titulo=noticia)
+    noticia1 = Noticia.objects.filter(noticia=noticia2[0].id)
+    categoria = Categoria.objects.all()
+    context = {
+        'noticia': noticia1,
+        'categoria': categoria,
+    }
+    return render(request, 'noticia/detailNoticia.html', context)
+"""
+

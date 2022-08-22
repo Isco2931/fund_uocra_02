@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 #LO AGREGUE DE CHRISTIAN
 from distutils.command.upload import upload
 from email.policy import default
@@ -12,4 +13,7 @@ class Usuario(AbstractUser):
 #	telefono = 
 #	direccion =		
 #		hay que agregar los demas atributos
+
+	def get_absolute_url(self):
+		return reverse('index')
 		
