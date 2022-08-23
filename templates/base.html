@@ -89,11 +89,11 @@
         </li>
           {%endif%}
             {% if user.is_superuser %}
-            <li class="dropdown"><a href="#"><span>Administrar</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <li class="dropdown"><a href="#"><span>Administración</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
               <ul>
                 <li><a href="/noticia/addNoticia/">Crear noticia</a></li>
                 <li><a href="/noticia/addCategoria/">Crear Categoría</a></li>
-                <li><a href="#">Eliminar usuario</a></li>
+                <li><a href="/admin/">Administrar</a></li>
               </ul>
             </li>
            {% endif %}

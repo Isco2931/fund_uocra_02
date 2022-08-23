@@ -27,6 +27,7 @@ urlpatterns = [
     path('index/', Index, name = 'index'),
     path('noticia/', include ('apps.noticia.urls') ),
     path('ingresar/', include ('apps.usuario.urls'), name='ingresar'),
+    path('accounts/', include('django.contrib.auth.urls')),
 #   path('comentario/', include ('apps.comentario.urls') ),
 # LO QUE SIGUE LO AGREGUE DE ABI
     path('about/', About, name='about'),
