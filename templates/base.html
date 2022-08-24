@@ -1,4 +1,5 @@
 {% load bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,24 +63,25 @@
         <ul>
           <li><a href="{% url 'index' %}">Inicio</a></li>
           <li class="dropdown"><a href="/noticia/listarNoticia/"><span>Noticias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+           <!-- 
             <ul>
               <li><a class="dropdown-item" href="#">Categorias</a></li>    
             </ul>
-          <!--
+          --> 
+          {% if categorias %}
+          <ul>
+            {% for item in categorias %}             
+                <li><a href="/noticia/listarCategoria/{{item.nombre}}">{{item.nombre}}</a></li>            
             
-            "PARA QUE EL DROPDOWN APAREZCA EL LISTADO DE CATEGORIAS DISPONIBLES"
-          {% if categoria %}
-            {% for c in categoria %}             
-              <ul>
-                <li><a class="dropdown-item" href="#">{{c.nombre}}</a></li>            
-              </ul>)
             {% endfor %}
+          </ul>
           {% endif %}
           </li>
-        --> 
+        
           <li><a href="{% url 'about' %}">Acerca de Nosotros</a></li>
           <li><a href="{% url 'contact' %}">Contáctanos</a></li>
-          {% if user.is_authenticated %}<li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar Sesión</a></li>
+          {% if user.is_authenticated %}
+          <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar Sesión</a></li>
             {%else%}
             <li class="dropdown"><a href="#"><span>Mi cuenta</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>             
             <ul>

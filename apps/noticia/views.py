@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 #LEER SOBRE VISTAS BASADAS EN CLASES Y VISTAS GENERICAS
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -89,4 +89,91 @@ def DetailNoticia (request, noticia):
     }
     return render(request, 'noticia/detailNoticia.html', context)
 """
+from apps.comentario.models import Comentario
+from apps.comentario.forms import ComentarioForm
+
+################# Comentario repo Gaston ####################
+class DetailNoticia2(DetailView):
+    model = Noticia
+    template_name = 'noticia/detailNoticia2.html'
+
+    def ListarContexto (request):
+        noticia = Noticia.objects.all()
+        categoria = Categoria.objects.all()
+        comentario = Comentario.objects.all()
+        context = {
+            'noticia': noticia,
+            'categoria': categoria,
+            'comentario': comentario,
+        }
+        return render(request, 'noticia/detailNoticia2.html', context)
+
+class CreateComentario(CreateView):
+    model = Comentario
+    template_name = 'comentario/addComentario2.html'
+    fields = ['comentario']
+    exclude = ['autor', 'noticia']
+    #form_class = CommentForm
+    fields = '__all__'
+    success_url = reverse_lazy('index')
+
+
+
+
+################# Comentario repo Augusto ####################
+
+
+
+from django.core.cache import cache
+from django.contrib.auth import views as auth
+from django.views import View
+
+def ReadPost(request, id):
+	try:
+		posts = ExistePost(id)
+	except Exception:
+		posts = Noticia.objects.get(id=id)
+	comentarios = Comentario.objects.filter(post=id)
+
+	form = ComentarioForm(request.POST or None)
+	if form.is_valid():
+		if request.user.is_authenticated:
+			aux =  form.save(commit=False)
+			aux.Noticia = posts
+			aux.Usuario = request.Usuario
+			aux.save()
+			form = ComentarioForm()
+		else:
+			return redirect('usuario:login')
+	
+	context = {
+		'titulo': 'post',
+		'posts': posts,
+		'form': form,
+		'comentarios': comentarios
+	}
+	return render(request,'noticia/detailNoticia2.html', context)
+
+
+def ExistePost(id):
+	for i in cache.get('posts'):
+		if i.id == id:
+			return i
+	return None
+
+################# Contexto Categorias repo Chuki ####################
+
+def MostrarCategorias(request):
+    categorias = Categoria.objects.all()
+    context = {
+        "categorias": categorias,
+    }
+    return context
+
+def MostrarComentarios(request):
+    comentarios = Comentario.objects.all()
+    context = {
+        "comentarios": comentarios,
+    }
+    return ( context)
 
