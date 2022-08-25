@@ -1,4 +1,5 @@
 {% load bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +7,20 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Fundación UOCRA - Index</title>
+  <title>Fundación UOCRA</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Plantilla Login-->
+  <meta name="viewport" content="width=device-width" />
+  <meta charset="UFT-8" />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="/static/usuario/styles.css" />
+  <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'> 
+
   <!-- Favicons -->
-  <link href="static/assets/img/favicon.png" rel="icon">
-  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/static/assets/img/favicon.png" rel="icon">
+  <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,15 +28,15 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
 
   <!-- Template Main CSS Files -->
-  <link href="static/assets/css/variables.css" rel="stylesheet">
-  <link href="static/assets/css/main.css" rel="stylesheet">
+  <link href="/static/assets/css/variables.css" rel="stylesheet">
+  <link href="/static/assets/css/main.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: ZenBlog - v1.1.0
@@ -44,38 +52,74 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="{% url 'index' %}" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-      <img src="static/logo.png" alt="">
-        <h1>Fundación UOCRA</h1>
+      <img src="/static/logo-fundacion-uocra.png" alt="">
+      <!-- Uncomment the line below if you also wish to use an a title name  
+      <h1>Fundación UOCRA</h1>--> 
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="single-post.html">Noticias</a></li>
-          <li class="dropdown"><a href="category.html"><span>Categorias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li><a href="{% url 'index' %}">Inicio</a></li>
+          <li class="dropdown"><a href="/noticia/listarNoticia/"><span>Noticias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+           <!-- 
             <ul>
-              <li><a href="search-result.html">Search Result</a></li>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a class="dropdown-item" href="#">Categorias</a></li>    
             </ul>
+          --> 
+          {% if categorias %}
+          <ul>
+            {% for item in categorias %}             
+                <li><a href="/noticia/listarCategoria/{{item.nombre}}">{{item.nombre}}</a></li>            
+            
+            {% endfor %}
+          </ul>
+          {% endif %}
           </li>
+        
+          <li><a href="{% url 'about' %}">Acerca de Nosotros</a></li>
+          <li><a href="{% url 'contact' %}">Contáctanos</a></li>
+          {% if user.is_authenticated %}
+          <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar Sesión</a></li>
+            {%else%}
+            <li class="dropdown"><a href="#"><span>Mi cuenta</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>             
+            <ul>
+                <li><a href="{% url 'apps.usuario:login' %}">Iniciar Sesión</a></li>
+                <li><a href="/ingresar/registro/">Registrarme</a></li>
+            </ul>
+        </li>
+          {%endif%}
+            {% if user.is_superuser %}
+            <li class="dropdown"><a href="#"><span>Administración</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+              <ul>
+                <li><a href="/noticia/addNoticia/">Crear noticia</a></li>
+                <li><a href="/noticia/addCategoria/">Crear Categoría</a></li>
+                <li><a href="/admin/">Administrar</a></li>
+              </ul>
+            </li>
+           {% endif %}
+<!--            </li>
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Administrar
+            </button>
+                <ul class="dropdown" aria-labelledby="dropdownButton">
+                    <li><a target="_blank" class="dropdown-item" href="/noticia/addNoticia/"> Crear noticia</a></li>
+                    <li><a target="_blank" class="dropdown-item" href="/noticia/addCategoria/"> Crear Categoría</a></li>
+                    <li><a target="_blank" class="dropdown-item" href="#">Eliminar usuario</a></li>
+                </ul>
+ 
 
-          <li><a href="about.html">Acerca de Nosotros</a></li>
-          <li><a href="contact.html">Contáctanos</a></li>
-          <li><a href="acceder.html">Acceder</a></li>
+            <li class="dropdown"><a href="/category"><span>Categorias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+              <ul>
+                <li><a href="/search-result">Search Result</a></li>
+                <li><a href="#">Drop Down 1</a></li>
+                <li><a href="#">Drop Down 4</a></li>
+              </ul>
+            </li>
+            </li>
+  -->
+
         </ul>
       </nav><!-- .navbar -->
 
@@ -119,30 +163,29 @@
           <div class="col-lg-4">
             <h3 class="footer-heading">About ZenBlog</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ab, perspiciatis beatae autem deleniti voluptate nulla a dolores, exercitationem eveniet libero laudantium recusandae officiis qui aliquid blanditiis omnis quae. Explicabo?</p>
-            <p><a href="about.html" class="footer-link-more">Learn More</a></p>
+            <p><a href="{% url 'about' %}" class="footer-link-more">Acerca de nosotros</a></p>
           </div>
           <div class="col-6 col-lg-2">
             <h3 class="footer-heading">Navigation</h3>
             <ul class="footer-links list-unstyled">
-              <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
-              <li><a href="index.html"><i class="bi bi-chevron-right"></i> Blog</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Categories</a></li>
-              <li><a href="single-post.html"><i class="bi bi-chevron-right"></i> Single Post</a></li>
-              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About us</a></li>
-              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
+              <li><a href="{% url 'index' %}"><i class="bi bi-chevron-right"></i> Home</a></li>
+              <li><a href="{% url 'category' %}"><i class="bi bi-chevron-right"></i> Categories</a></li>
+              <li><a href="{% url 'single-post' %}"><i class="bi bi-chevron-right"></i> Single Post</a></li>
+              <li><a href="{% url 'about' %}"><i class="bi bi-chevron-right"></i> About us</a></li>
+              <li><a href="{% url 'contact' %}"><i class="bi bi-chevron-right"></i> Contact</a></li>
             </ul>
           </div>
           <div class="col-6 col-lg-2">
             <h3 class="footer-heading">Categories</h3>
             <ul class="footer-links list-unstyled">
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Culture</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Food</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Politics</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Startups</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Travel</a></li>
+              <li><a href="category"><i class="bi bi-chevron-right"></i> Business</a></li>
+              <li><a href="category"><i class="bi bi-chevron-right"></i> Culture</a></li>
+              <li><a href="category"><i class="bi bi-chevron-right"></i> Sport</a></li>
+              <li><a href="category"><i class="bi bi-chevron-right"></i> Food</a></li>
+              <li><a href="category"><i class="bi bi-chevron-right"></i> Politics</a></li>
+              <li><a href="category"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
+              <li><a href="category"><i class="bi bi-chevron-right"></i> Startups</a></li>
+              <li><a href="category"><i class="bi bi-chevron-right"></i> Travel</a></li>
 
             </ul>
           </div>
@@ -152,8 +195,8 @@
 
             <ul class="footer-links footer-blog-entry list-unstyled">
               <li>
-                <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="static/assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
+                <a href="{% url 'single-post' %}" class="d-flex align-items-center">
+                  <img src="/static/assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
                     <span>5 Great Startup Tips for Female Founders</span>
@@ -162,8 +205,8 @@
               </li>
 
               <li>
-                <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="static/assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
+                <a href="single-post" class="d-flex align-items-center">
+                  <img src="/static/assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
                     <span>What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</span>
@@ -172,8 +215,8 @@
               </li>
 
               <li>
-                <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="static/assets/img/post-sq-3.jpg" alt="" class="img-fluid me-3">
+                <a href="single-post" class="d-flex align-items-center">
+                  <img src="/static/assets/img/post-sq-3.jpg" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
                     <span>Life Insurance And Pregnancy: A Working Mom’s Guide</span>
@@ -182,8 +225,8 @@
               </li>
 
               <li>
-                <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="static/assets/img/post-sq-4.jpg" alt="" class="img-fluid me-3">
+                <a href="single-post" class="d-flex align-items-center">
+                  <img src="/static/assets/img/post-sq-4.jpg" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
                     <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
@@ -238,14 +281,14 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="static/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="static/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="static/assets/vendor/aos/aos.js"></script>
-  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/static/assets/vendor/aos/aos.js"></script>
+  <script src="/static/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="static/assets/js/main.js"></script>
+  <script src="/static/assets/js/main.js"></script>
 
 </body>
 
