@@ -17,9 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import About, Category, Contact, Index, Search_Result, Single_Post
-
-#ESTO LO AGREGUE DE ABI from .views import Index, galeria, basic, full, sidebar_left, sidebar_right 
+from .views import About, Contact, Index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,12 +27,8 @@ urlpatterns = [
     path('ingresar/', include ('apps.usuario.urls'), name='ingresar'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('comentario/', include ('apps.comentario.urls') ),
-# LO QUE SIGUE LO AGREGUE DE ABI
     path('about/', About, name='about'),
-    path('category/', Category, name='category'),
     path('contact/', Contact, name='contact'), 
-    path('search-result/', Search_Result, name='search-result'),
-    path('single-post/', Single_Post, name='single-post'),
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
 if settings.DEBUG:

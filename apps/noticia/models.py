@@ -1,5 +1,5 @@
 from django.db import models
-from ..usuario.models import Usuario
+from apps.usuario.models import Usuario
 
 # Create your models here.
 
@@ -17,6 +17,9 @@ class Noticia(models.Model):
     activo = models.BooleanField(default=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
     imagen = models.ImageField(upload_to='noticia', default='noticia/default.png')
-    
+    class Meta:
+        ordering = ('-fecha',)
+
     def __str__(self):
         return self.titulo
+    
