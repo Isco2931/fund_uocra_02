@@ -15,27 +15,29 @@
 
           <div class="d-md-flex post-entry-2 half">
             <a href="#" class="me-4 thumbnail">
-              <img src="/static/assets/img/post-landscape-2.jpg" alt="" class="img-fluid">
+              <img src="/static/assets/img/post-uocra.png" alt="" class="img-fluid">
             </a>
             <div class="ps-md-5 mt-4 mt-md-0">
-              <div class="post-meta mt-4">About us</div>
-              <h2 class="mb-4 display-4">Company History</h2>
+              <div class="post-meta mt-4">Acerca de Nosotros</div>
+              <h2 class="mb-4 display-4">La Fundación</h2>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
-              <p>Fugit eaque illum blanditiis, quo exercitationem maiores autem laudantium unde excepturi dolores quasi eos vero harum ipsa quam laborum illo aut facere voluptates aliquam adipisci sapiente beatae ullam. Tempora culpa iusto illum accusantium cum hic quisquam dolor placeat officiis eligendi.</p>
+              <p>La Fundación UOCRA es una ONG que pertenece a la Red Social UOCRA. Nació en octubre de 1993 bajo el nombre de Fundación de Educación y Capacitación para los Trabajadores de la Construcción (FEyCTC) pero en 2007 cambió a la denominación actual.
+                Más de 25 años de trabajo dedicados a la educación de los trabajadores y las trabajadoras de la industria nos consolidaron como una institución que, además de gestionar proyectos y programas de formación profesional, impulsa diversas políticas e iniciativas para que sean discutidas en las agendas públicas que atienden las problemáticas de la educación – trabajo.
+                </p>
             </div>
           </div>
 
           <div class="d-md-flex post-entry-2 half mt-5">
-            <a href="#" class="me-4 thumbnail order-2">
-              <img src="/static/assets/img/post-landscape-1.jpg" alt="" class="img-fluid">
-            </a>
+            {% comment %} <a href="#" class="me-4 thumbnail order-2">
+              <img src="/static/assets/img/post-landscape-1.png" alt="" class="img-fluid">
+            </a> {% endcomment %}
             <div class="pe-md-5 mt-4 mt-md-0">
-              <div class="post-meta mt-4">Mission &amp; Vision</div>
-              <h2 class="mb-4 display-4">Mission &amp; Vision</h2>
+              <div class="post-meta mt-4">Misión &amp; Visión</div>
+              <h2 class="mb-4 display-4">Misión &amp; Visión</h2>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
-              <p>Fugit eaque illum blanditiis, quo exercitationem maiores autem laudantium unde excepturi dolores quasi eos vero harum ipsa quam laborum illo aut facere voluptates aliquam adipisci sapiente beatae ullam. Tempora culpa iusto illum accusantium cum hic quisquam dolor placeat officiis eligendi.</p>
+              <p>Habitamos el futuro del trabajo y aquí los procesos formativos son permanentes a lo largo de la vida de las personas; proporcionan capacidades, conocimientos, valores y habilidades apuntando a la inclusión social, el desarrollo social y económico a todos. Educar hoy implica democratizar el acceso a la tecnología en la formación virtual y promover la adquisición y actualización de competencias digitales para los trabajadores en general.
+                Estos cursos intentan promover en forma diversificada la capacitación profesional de oficios que tengan que ver con la construcción y con la nueva tecnología existente. Además son capacitaciones únicas debido a sus características como el cupo limitado, que acceden a ellas de manera gratuita y exclusiva, y que al finalizar contarán inmediatamente con la herramientas para ingresar al mercado laboral de manera formal. Atentos a este compromiso, tenemos la responsabilidad de lograr el perfil de competencia y capacidad que requieren los nuevos desafíos que surgen de los nuevos tiempos.
+                </p>
             </div>
           </div>
 
@@ -44,7 +46,7 @@
       </div>
     </section>
 
-    <section class="mb-5 bg-light py-5">
+    {% comment %} <section class="mb-5 bg-light py-5">
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-between align-items-lg-center">
           <div class="col-lg-5 mb-4 mb-lg-0">
@@ -65,7 +67,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> {% endcomment %}
 
     <section>
       <div class="container" data-aos="fade-up">
@@ -73,46 +75,34 @@
           <div class="col-12 text-center mb-5">
             <div class="row justify-content-center">
               <div class="col-lg-6">
-                <h2 class="display-4">Our Team</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sint sed, fugit distinctio ad eius itaque deserunt doloribus harum excepturi laudantium sit officiis et eaque blanditiis. Dolore natus excepturi recusandae.</p>
+                <h2 class="display-4">Nuestro Equipo</h2>
+                {% comment %} <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sint sed, fugit distinctio ad eius itaque deserunt doloribus harum excepturi laudantium sit officiis et eaque blanditiis. Dolore natus excepturi recusandae.</p> {% endcomment %}
               </div>
             </div>
           </div>
           <div class="col-lg-4 text-center mb-5">
-            <img src="static/assets/img/person-1.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Cameron Williamson</h4>
-            <span class="d-block mb-3 text-uppercase">Founder &amp; CEO</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+            <img src="{% static 'assets/img/christian.png'%}" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Telias Camacho Christian</h4>
           </div>
           <div class="col-lg-4 text-center mb-5">
-            <img src="static/assets/img/person-2.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Wade Warren</h4>
-            <span class="d-block mb-3 text-uppercase">Founder, VP</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+            <img src="{% static 'assets/img/abigail.png'%}" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Wagner Abigail</h4>
           </div>
           <div class="col-lg-4 text-center mb-5">
-            <img src="static/assets/img/person-3.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Jane Cooper</h4>
-            <span class="d-block mb-3 text-uppercase">Editor Staff</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+            <img src="{% static 'assets/img/gaston.png'%}" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Vega Gastón</h4>
           </div>
           <div class="col-lg-4 text-center mb-5">
-            <img src="static/assets/img/person-4.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Cameron Williamson</h4>
-            <span class="d-block mb-3 text-uppercase">Editor Staff</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+            <img src="{% static 'assets/img/francisco-l.png'%}" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Luna Francisco</h4>
           </div>
           <div class="col-lg-4 text-center mb-5">
-            <img src="static/assets/img/person-5.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Cameron Williamson</h4>
-            <span class="d-block mb-3 text-uppercase">Editor Staff</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+            <img src="{% static 'assets/img/francisco-b.png'%}" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Barrientos Francisco</h4>
           </div>
           <div class="col-lg-4 text-center mb-5">
-            <img src="static/assets/img/person-6.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Cameron Williamson</h4>
-            <span class="d-block mb-3 text-uppercase">Editor Staff</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+            <img src="{% static 'assets/img/hernan.png'%}" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Mayol Hernán</h4>
           </div>
         </div>
       </div>
@@ -120,5 +110,3 @@
 
   </main><!-- End #main -->
 {% endblock %}
-  
-  
