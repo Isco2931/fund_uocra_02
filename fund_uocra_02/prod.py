@@ -1,4 +1,7 @@
+import django_heroku
+django_heroku.settings(locals())
 from .settings import *
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -18,6 +21,3 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
-import django_heroku
-django_heroku.settings(locals())
