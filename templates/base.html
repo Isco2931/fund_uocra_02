@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width" />
   <meta charset="UFT-8" />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="/static/usuario/styles.css" />
+  <link rel="stylesheet" href="{% static 'usuario/styles.css' %}" />
   <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'> 
 
   <!-- Favicons -->
@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-  "{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"
+
   <!-- Vendor CSS Files -->
   <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
@@ -56,7 +56,8 @@
 
       <a href="{% url 'index' %}" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-      <img src="/static/logo-fundacion-uocra.png" alt="">
+
+      <img src="{% static 'logo-fundacion-uocra.png' %}" alt="">
       <!-- Uncomment the line below if you also wish to use an a title name  
       <h1>Fundación UOCRA</h1>--> 
       </a>
@@ -179,7 +180,6 @@
               <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
               Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
-
           </div>
 
           <div class="col-md-6">
@@ -187,11 +187,8 @@
               <a href="https://www.facebook.com/uepuocra" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
               <a href="https://www.instagram.com/uegp149uocra/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
 
