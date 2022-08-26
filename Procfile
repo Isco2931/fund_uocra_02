@@ -1,1 +1,1 @@
-web: gunicorn ong.wsgi --log-file -
+web: gunicorn fund_uocra_02.wsgi --log-file -
