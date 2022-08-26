@@ -1,5 +1,3 @@
-import django_heroku
-django_heroku.settings(locals())
 from .settings import *
 
 
@@ -21,3 +19,5 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+import django_heroku
+django_heroku.settings(locals())
