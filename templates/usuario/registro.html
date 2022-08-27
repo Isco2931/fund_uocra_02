@@ -2,7 +2,8 @@
 {% load static %}
 {% block contenido %}  
 {% load crispy_forms_tags %}
-<body>
+<main id="main">
+    <!-- ======= Hero Slider Section ======= -->
 	<div class="section">
 		<div class="container">
 			<div class="row full-height justify-content-center">
@@ -10,7 +11,7 @@
 					<div class="section pb-5 pt-5 pt-sm-2 text-center">
 						<div class="center-wrap">
 							<div class="section text-center">
-                                <form method="post" class="my-class"> <!---->
+                                <form method="post" class="my-class">
 									<h4 class="mb-4 pb-3">Regístrate</h4>
                                     {% csrf_token %}
 									{{form | crispy}}                    
@@ -25,6 +26,6 @@
 	      	</div>
 	    </div>
 	</div>
-  </body>
+</main><!-- End #main -->
 {% endblock %}  
 

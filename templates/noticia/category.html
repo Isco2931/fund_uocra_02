@@ -24,6 +24,14 @@
                             <h3 class="m-0 p-0">{{p.autor}}</h3>
                           </div>
                         </div>
+                        {% if user.is_superuser %}
+                        <div class="name">
+                          <ul>
+                            <li><a href="/noticia/updateNoticia/{{p.pk}}">Editar</a></li>
+                            <li><a href="/noticia/eliminarNoticia/{{p.pk}}">Eliminar</a></li>
+                          </ul>
+                        </div>                       
+                       {% endif %} 
                       </div>
                     </div>
                   {% endfor %}
