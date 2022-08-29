@@ -40,6 +40,13 @@ def ListarNoticiaPorCategoria (request, categoria):
     }
     return render(request, 'noticia/category.html', context)
 
+def ListarCategoria(request):
+    categorias = Categoria.objects.all()
+    context = {
+        'categorias': categorias,
+    }
+    return render(request, 'noticia/listarCategoria.html', context)
+    
 
 class UpdateNoticia(UpdateView):
     model = Noticia
@@ -82,7 +89,7 @@ from apps.comentario.models import Comentario
 class CreateComentario(CreateView):
     model = Comentario
     template_name = 'comentario/addComentario2.html'
-    fields = ['autor','noticia','comentario']
+    fields = ['autor','noticia','comentario', ]
     success_url = reverse_lazy('Listar-Noticia')
 
 

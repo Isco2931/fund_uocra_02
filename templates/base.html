@@ -71,7 +71,7 @@
           </li>
         
           <li><a href="{% url 'about' %}">Acerca de Nosotros</a></li>
-          <li><a href="{% url 'contact' %}">Contáctanos</a></li>
+          <li><a href="{% url 'contact' %}">Contactanos</a></li>
           {% if user.is_authenticated %}
           <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar Sesión</a></li>
             {%else%}

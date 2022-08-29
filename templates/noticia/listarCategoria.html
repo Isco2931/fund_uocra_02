@@ -1,16 +1,17 @@
 {% extends 'base.html'  %}
 {% load static %}
 {% block contenido %}
-{% if Categoria %}
+   
+   <h3>Categorias</h3>
+    {% if categorias %}
+        <br></br>
+        {% for c in categorias %}
+            <br></br>
+            <h4>{{c.nombre}}</h4>
+        {% endfor %}
+    {% endif %}
+        
 
-    {% for c in Categoria %}
-        <h1>{{c.nombre}}</h1>
-
-
-    {% endfor %}
-
-    {% else %}
-        <h1>Aquí no paso nada caballeros</h1>
-
-{% endif %}
+    
+    
 {% endblock %}

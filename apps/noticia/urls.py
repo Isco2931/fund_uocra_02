@@ -9,6 +9,7 @@ urlpatterns = [
     path('detail/<int:pk>', views.DetailNoticia.as_view(), name='Detail-Noticia'),
     path('listarNoticia/', views.ListarNoticia, name='Listar-Noticia'),
     path('listarCategoria/<str:categoria>', views.ListarNoticiaPorCategoria),
+    path('listarCategoria/', views.ListarCategoria),
     path('notice/<int:pk>/addComment/', views.CreateComentario.as_view(), name='add_comment'),
 
 ]
