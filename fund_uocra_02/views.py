@@ -1,9 +1,6 @@
-from django.shortcuts import render #, redirect
-from django.views import View
-from django.urls import reverse
-#from django.contrib.auth.views import LoginView, LogoutView
-#from .forms import userForm, loginForm
-#from django.contrib.auth.views import LoginView
+from django.shortcuts import render 
+
+
 
 def Index(request):
     return render(request, 'index.html')

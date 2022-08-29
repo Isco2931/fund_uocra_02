@@ -8,7 +8,7 @@ from email.policy import default
 # Create your models here.
 
 class Usuario(AbstractUser):
-	imagen = models.ImageField(upload_to='usuario', default='usuario/user-default.png')
+	imagen = models.ImageField(upload_to='usuario', default='usuario/imguserdef.png')
 #	telefono = 
 #	direccion =		
 #		hay que agregar los demas atributos
