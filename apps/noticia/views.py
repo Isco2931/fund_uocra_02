@@ -1,20 +1,24 @@
 from multiprocessing import context
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
 from .models import Noticia, Categoria
+
+
 class AddNoticia(CreateView):
     model = Noticia
     fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
     template_name = 'noticia/addNoticia.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('Listar-Noticia')
+
+
 class AddCategoria(CreateView):
     model = Categoria
     fields = ['nombre']
     template_name = 'noticia/addCategoria.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('categoria')
+
 
 def ListarNoticia (request):
     noticia = Noticia.objects.all()
@@ -35,19 +39,27 @@ def ListarNoticiaPorCategoria (request, categoria):
         'categoria': categoria,
     }
     return render(request, 'noticia/category.html', context)
+
+
 class UpdateNoticia(UpdateView):
     model = Noticia
     fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
     template_name = 'noticia/updateNoticia.html'
     success_url = reverse_lazy('Listar-Noticia')
+
+
 class DeleteNoticia(DeleteView):
     model = Noticia
     template_name = 'noticia/eliminarNoticia.html'
     success_url = reverse_lazy('Listar-Noticia')
+
+
 class DetailNoticia(DetailView):
     model = Noticia
     template_name = 'noticia/detailNoticia.html'
-################# Contexto Categorias repo Chuki ####################
+
+
+################# Contexto Categorias  ####################
 
 def MostrarCategorias(request):
     categorias = Categoria.objects.all()
@@ -64,7 +76,8 @@ def MostrarComentarios(request):
     return ( context)
 
 
-################# Comentario repo Gaston ####################
+################# Comentarios Gaston ####################
+
 from apps.comentario.models import Comentario
 class CreateComentario(CreateView):
     model = Comentario
