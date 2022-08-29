@@ -46,7 +46,13 @@ def ListarCategoria(request):
         'categorias': categorias,
     }
     return render(request, 'noticia/listarCategoria.html', context)
-    
+
+def ListarComentarios(request):
+    comentarios = Comentario.objects.all()
+    context = {
+        "comentarios": comentarios,
+    }
+    return render(request, 'noticia/listarCategoria.html', context)
 
 class UpdateNoticia(UpdateView):
     model = Noticia

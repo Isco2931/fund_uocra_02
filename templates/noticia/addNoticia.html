@@ -10,7 +10,7 @@
 					<div class="section pb-5 pt-5 pt-sm-2 text-center">
 						<div class="section text-center">
 							{% if user.is_superuser %}
-                            <form method="post" class="my-class" action= "/noticia/addNoticia/"> <!---->
+                            <form method="post" class="my-class" action= "/noticia/addNoticia/"> 
                                 <h4 class="mb-4 pb-3">Crear Noticia</h4>
 									{% csrf_token %}
 									{{form | crispy}}

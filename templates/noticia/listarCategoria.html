@@ -5,13 +5,27 @@
    <h3>Categorias</h3>
     {% if categorias %}
         <br></br>
+        <br></br>
         {% for c in categorias %}
-            <br></br>
-            <h4>{{c.nombre}}</h4>
+            <center><h4>{{c.nombre}}</h4></center>
         {% endfor %}
+        <br></br>
+    {% endif %}
+    
+    <br></br>
+    <tr></tr>
+    <tr></tr>
+    <br></br>
+
+    <h3>Comentarios</h3>
+    {% if comentarios %}
+        <br></br>
+        <br></br>
+        {% for c in comentarios %}
+            <center><h4>{{c.comentario}}</h4></center>
+        {% endfor %}
+        <br></br>
     {% endif %}
         
-
-    
     
 {% endblock %}
