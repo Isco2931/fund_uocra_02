@@ -1,22 +1,25 @@
 {% extends 'base.html'  %}
 {% load static %}
 {% block contenido %}
-   
-   <h3>Categorias</h3>
+
+    
     {% if categorias %}
         <br></br>
+        <br></br>
+        <center><h2>Categorias</h2></center>
         <br></br>
         {% for c in categorias %}
             <center><h4>{{c.nombre}}</h4></center>
         {% endfor %}
         <br></br>
-    {% endif %}
+    {% endif %} 
     
     <br></br>
     <tr></tr>
     <tr></tr>
     <br></br>
 
+    
     <h3>Comentarios</h3>
     {% if comentarios %}
         <br></br>
