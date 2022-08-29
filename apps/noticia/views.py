@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from .models import Noticia, Categoria
+from apps.comentario.models import Comentario
 class AddNoticia(CreateView):
     model = Noticia
     fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
@@ -65,7 +66,7 @@ def MostrarComentarios(request):
 
 
 ################# Comentario repo Gaston ####################
-from apps.comentario.models import Comentario
+
 class CreateComentario(CreateView):
     model = Comentario
     template_name = 'comentario/addComentario2.html'

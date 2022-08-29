@@ -10,6 +10,9 @@
                   {% for p in noticia %}  
                     <div class="d-md-flex post-entry-2 half">
                       <a href="/noticia/detail/{{p.pk}}" class="me-4 thumbnail">
+                        <!--
+                        <img src="{{ MEDIA_URL }}images/myimage.png"/>
+                        -->
                         <img src="{{p.imagen.url}}" alt="" class="img-fluid">
                       </a>
                       <div>
