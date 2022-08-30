@@ -1,9 +1,9 @@
 {% extends 'base.html'  %}
 {% load static %}
 {% block contenido %}
-
+{% if noticia %}
   <main id="main">
-    <p>lorem100 Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi repellendus odit id dolores accusantium, debitis dolor quam tenetur rerum temporibus.</p>
+
     <section class="single-post-content">
       <div class="container">
         <div class="row">
@@ -12,12 +12,12 @@
             <!-- ======= Single Post Content ======= -->
 
             <div class="single-post">
-              <div class="post-meta"><span class="date">{{object.categoria}}</span> <span class="mx-1">&bullet;</span> <span>{{object.fecha}}</span></div>
-              <h1 class="mb-5">{{object.titulo}}</h1>
-              <p><span class="firstcharacter"></span>{{object.texto}}</p>
+              <div class="post-meta"><span class="date">{{noticia.categoria}}</span> <span class="mx-1">&bullet;</span> <span>{{noticia.fecha}}</span></div>
+              <h1 class="mb-5">{{noticia.titulo}}</h1>
+              <p><span class="firstcharacter"></span>{{noticia.texto}}</p>
 
               <figure class="my-4">
-                <img src="{{object.imagen.url}}" alt="" class="img-fluid">
+                <img src="{{noticia.imagen.url}}" alt="" class="img-fluid">
               </figure>
 
             </div><!-- End Single Post Content -->
@@ -28,7 +28,7 @@
             <h5 class="comment-title py-4">Comentarios</h5>
             {% if comentarios %}
             {% for coment in comentarios %}
-            {% if coment.noticia.id == object.id %}                        
+            {% if coment.noticia.id == noticia.id %}                        
             <div class="comment d-flex mb-4">
               <div class="flex-shrink-0">
                 <div class="avatar avatar-sm rounded-circle">
@@ -64,9 +64,9 @@
             <div class="row justify-content-center mt-5">
               <div class="col-lg-12">
                 <h5 class="comment-title">Deje un comentario</h5>
-                <div class="row">
-                <a href="{% url 'add_comment' object.pk %}" class="btn mt-4">Agregar comentario</a>
-                </div>
+                
+                  {% include 'comentario/addComentario.html' %}
+                
               </div>
             </div>
             
@@ -97,6 +97,7 @@
         </div>
       </div>
     </section>
-  </main><!-- End #main -->
 
+  </main><!-- End #main -->
+{% endif %}
 {% endblock %}

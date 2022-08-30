@@ -1,0 +1,51 @@
+{% load crispy_forms_tags %}
+
+	<div class="add_comment">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<div class="section text-center">
+
+                            <form method="POST">{%csrf_token%}
+                                
+                                    {{ form|crispy }}
+                                
+                                {% if user.is_authenticated %}
+                                    <input class="btn btn-outline-secondary"type="submit" value="Comentar"/> 
+                                {% else %}
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Comentar
+                                    </button>
+                                   
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Error al Comnetar</h5>
+                                                    
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    
+                                                </div>
+                                                <div class="modal-body">
+                                                    Usted tiene que iniciar sesión o registrarse, para poder comentar 
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:login' %}" target="_blank">Iniciar Sesión</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %} 
+                                
+                            </form>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+

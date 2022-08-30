@@ -2,11 +2,12 @@ asgiref==3.5.2
 beautifulsoup4==4.11.1
 certifi==2022.6.15
 charset-normalizer==2.1.1
+cloudinary==1.29.0
 coreapi==2.3.3
 coreschema==0.0.4
 dj-database-url==1.0.0
-Django==4.0.6
-django-admin-interface==0.19.2
+Django==4.1
+django-admin-interface==0.20.0
 django-bootstrap-v5==1.0.11
 django-ckeditor==6.5.0
 django-colorfield==0.7.2
@@ -35,7 +36,7 @@ ruamel.yaml.clib==0.2.6
 six==1.16.0
 soupsieve==2.3.2.post1
 sqlparse==0.4.2
-tzdata==2022.1
+tzdata==2022.2
 uritemplate==4.1.1
 urllib3==1.26.12
 whitenoise==6.2.0

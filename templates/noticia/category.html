@@ -19,9 +19,9 @@
                         <h3><a href="/noticia/detail/{{p.pk}}">{{p.titulo}}</a></h3>
                         <p>{{p.texto}}</p>
                         <div class="d-flex align-items-center author">
-                          <div class="photo"><img src="{{p.autor.imagen.url}}" alt="" class="img-fluid"></div>
+                          <div class="photo"><img src="{{p.usuario.imagen.url}}" alt="" class="img-fluid"></div>
                           <div class="name">
-                            <h3 class="m-0 p-0">{{p.autor}}</h3>
+                            <h3 class="m-0 p-0">{{p.usuario}}</h3>
                           </div>
                         </div>
                         {% if user.is_superuser %}

@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 from pathlib import Path
 from django.urls import reverse_lazy
 
@@ -44,6 +46,8 @@ INSTALLED_APPS = [
     "colorfield",
     'crispy_forms',
     'django.contrib.humanize',
+    
+    'cloudinary',
 
     "bootstrap5",
 ]
@@ -129,7 +133,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
-MEDIA_URL = 'media/'
+MEDIA_URL =  '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -146,3 +150,9 @@ EMAIL_HOST_PASSWORD = 'Fund-Uocra1'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+cloudinary.config( 
+  cloud_name = "christiandtc", 
+  api_key = "554369918177371", 
+  api_secret = "gHOq93WxTzG5UIdUOrR4JrirPhA",
+  secure = True
+)

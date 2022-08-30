@@ -1,14 +1,20 @@
 from multiprocessing import context
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from .models import Noticia, Categoria
+from apps.comentario.models import Comentario
+
+########################################################
+from django.views.generic import View
+from apps.comentario.forms import ComentarioForm
+from django.shortcuts import render, redirect
+###########################################################
 
 
 class AddNoticia(CreateView):
     model = Noticia
-    fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
+    fields = ['usuario', 'titulo', 'texto', 'categoria', 'imagen']
     template_name = 'noticia/addNoticia.html'
     success_url = reverse_lazy('Listar-Noticia')
 
@@ -20,7 +26,7 @@ class AddCategoria(CreateView):
     success_url = reverse_lazy('categoria')
 
 
-def ListarNoticia (request):
+def ListarNoticia2 (request):
     noticia = Noticia.objects.all()
     categoria = Categoria.objects.all()
     context = {
@@ -56,7 +62,7 @@ def ListarComentarios(request):
 
 class UpdateNoticia(UpdateView):
     model = Noticia
-    fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
+    fields = ['usuario', 'titulo', 'texto', 'categoria', 'imagen']
     template_name = 'noticia/updateNoticia.html'
     success_url = reverse_lazy('Listar-Noticia')
 
@@ -86,16 +92,51 @@ def MostrarComentarios(request):
     context = {
         "comentarios": comentarios,
     }
-    return ( context)
+    return context
+
+
+
+
+
+class CreateComentario(CreateView):
+    model = Comentario
+    template_name = 'comentario/addComentario2.html'
+    fields = ['usuario','noticia','comentario', ]
+    success_url = reverse_lazy('Listar-Noticia')
 
 
 ################# Comentarios Gaston ####################
 
-from apps.comentario.models import Comentario
-class CreateComentario(CreateView):
-    model = Comentario
-    template_name = 'comentario/addComentario2.html'
-    fields = ['autor','noticia','comentario', ]
-    success_url = reverse_lazy('Listar-Noticia')
 
 
+
+
+class ListarNoticia(View):
+    def get(self, request, pk, *args, **kwargs):
+        noticia = Noticia.objects.get(pk=pk)
+        form = ComentarioForm()
+        comentarios = Comentario.objects.filter(noticia=pk).order_by('fecha') # agregar - para ordenar de forma descendente
+        context = {
+              'noticia': noticia,
+          'form': form,
+          'comentarios': comentarios,
+          }
+        return render(request, 'noticia/noticia.html', context)
+
+    def post(self, request, pk, *args, **kwargs):
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            noticia = Noticia.objects.get(pk=pk)
+            form.instance.usuario = request.user
+            form.instance.noticia = noticia
+            form.save()
+            return redirect('Detail-Noticia', pk=pk)
+
+        comentarios = Comentario.objects.filter(noticia=pk).order_by('-fecha')
+
+        context = {
+            'noticia': noticia,
+            'form': form,
+            'comentarios': comentarios
+        }
+        return render(request, 'noticia/noticia.html', context)
