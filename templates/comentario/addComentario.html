@@ -1,6 +1,9 @@
+
+{% load static %}
+ 
 {% load crispy_forms_tags %}
 
-	<div class="add_comment">
+    <div class="add_comment">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-12 text-center align-self-center py-5">
@@ -23,7 +26,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Error al Comnetar</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Error al Comentar</h5>
                                                     
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     
@@ -33,6 +36,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:login' %}" target="_blank">Iniciar Sesión</a>
+                                                    <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:Registro-Usuario' %}" target="_blank">Registrarse</a>
                                                 </div>
                                             </div>
                                         </div>

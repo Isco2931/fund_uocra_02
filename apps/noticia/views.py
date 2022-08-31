@@ -4,12 +4,12 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from .models import Noticia, Categoria
 from apps.comentario.models import Comentario
-
-########################################################
 from django.views.generic import View
 from apps.comentario.forms import ComentarioForm
 from django.shortcuts import render, redirect
-###########################################################
+
+
+############# NOTICIAS ##############################################
 
 
 class AddNoticia(CreateView):
@@ -18,47 +18,6 @@ class AddNoticia(CreateView):
     template_name = 'noticia/addNoticia.html'
     success_url = reverse_lazy('Listar-Noticia')
 
-
-class AddCategoria(CreateView):
-    model = Categoria
-    fields = ['nombre']
-    template_name = 'noticia/addCategoria.html'
-    success_url = reverse_lazy('categoria')
-
-
-def ListarNoticia2 (request):
-    noticia = Noticia.objects.all()
-    categoria = Categoria.objects.all()
-    context = {
-        'noticia': noticia,
-        'categoria': categoria,
-
-    }
-    return render(request, 'noticia/listarNoticia.html', context)
-    
-def ListarNoticiaPorCategoria (request, categoria):
-    categoria2 = Categoria.objects.filter(nombre=categoria)
-    noticia = Noticia.objects.filter(categoria=categoria2[0].id)
-    categoria = Categoria.objects.all()
-    context = {
-        'noticia': noticia,
-        'categoria': categoria,
-    }
-    return render(request, 'noticia/category.html', context)
-
-def ListarCategoria(request):
-    categorias = Categoria.objects.all()
-    context = {
-        'categorias': categorias,
-    }
-    return render(request, 'noticia/listarCategoria.html', context)
-
-def ListarComentarios(request):
-    comentarios = Comentario.objects.all()
-    context = {
-        "comentarios": comentarios,
-    }
-    return render(request, 'noticia/listarCategoria.html', context)
 
 class UpdateNoticia(UpdateView):
     model = Noticia
@@ -76,39 +35,6 @@ class DeleteNoticia(DeleteView):
 class DetailNoticia(DetailView):
     model = Noticia
     template_name = 'noticia/detailNoticia.html'
-
-
-################# Contexto Categorias  ####################
-
-def MostrarCategorias(request):
-    categorias = Categoria.objects.all()
-    context = {
-        "categorias": categorias,
-    }
-    return context
-
-def MostrarComentarios(request):
-    comentarios = Comentario.objects.all()
-    context = {
-        "comentarios": comentarios,
-    }
-    return context
-
-
-
-
-
-class CreateComentario(CreateView):
-    model = Comentario
-    template_name = 'comentario/addComentario2.html'
-    fields = ['usuario','noticia','comentario', ]
-    success_url = reverse_lazy('Listar-Noticia')
-
-
-################# Comentarios Gaston ####################
-
-
-
 
 
 class ListarNoticia(View):
@@ -140,3 +66,75 @@ class ListarNoticia(View):
             'comentarios': comentarios
         }
         return render(request, 'noticia/noticia.html', context)
+
+
+def ListarNoticia2 (request):
+    noticia = Noticia.objects.all()
+    categoria = Categoria.objects.all()
+    context = {
+        'noticia': noticia,
+        'categoria': categoria,
+
+    }
+    return render(request, 'noticia/listarNoticia.html', context)
+
+
+def ListarNoticiaPorCategoria (request, categoria):
+    categoria2 = Categoria.objects.filter(nombre=categoria)
+    noticia = Noticia.objects.filter(categoria=categoria2[0].id)
+    categoria = Categoria.objects.all()
+    context = {
+        'noticia': noticia,
+        'categoria': categoria,
+    }
+    return render(request, 'noticia/category.html', context)
+
+
+
+
+################# Contexto Categorias  ####################
+
+
+def MostrarCategorias(request):
+    categorias = Categoria.objects.all()
+    context = {
+        "categorias": categorias,
+    }
+    return context
+
+
+def MostrarComentarios(request):
+    comentarios = Comentario.objects.all()
+    context = {
+        "comentarios": comentarios,
+    }
+    return context
+
+
+################# Comentarios ################################################
+
+
+class CreateComentario(CreateView):
+    model = Comentario
+    template_name = 'comentario/addComentario2.html'
+    fields = ['usuario','noticia','comentario', ]
+    success_url = reverse_lazy('Listar-Noticia')
+
+
+
+########### CATEGORIAS ################################################
+
+
+class AddCategoria(CreateView):
+    model = Categoria
+    fields = ['nombre']
+    template_name = 'noticia/addCategoria.html'
+    success_url = reverse_lazy('categoria')
+
+
+def ListarCategoria(request):
+    categorias = Categoria.objects.all()
+    context = {
+        'categorias': categorias,
+    }
+    return render(request, 'noticia/listarCategoria.html', context)
