@@ -1,34 +1,68 @@
 {% extends 'base.html'  %}
 {% load static %}
 {% block contenido %}
+{% load crispy_forms_tags %}
+{% if user.is_superuser %}  
 
-    
     {% if categorias %}
         <br></br>
         <br></br>
         <center><h2>Categorias</h2></center>
         <br></br>
         {% for c in categorias %}
-            <center><h4>{{c.nombre}}</h4></center>
+            
+            {% comment %} <form method="post" class="my-class"> 
+                <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar la categoria: {{c.nombre}}?</span></h6>
+                {% csrf_token %}
+                {{form | crispy}}
+                <input type="submit" class="btn mt-4" value="Modificar" />
+                <input type="submit" class="btn mt-4" value="Eliminar" />
+                <br></br>
+            </form> {% endcomment %}
+            <h4>Categoria: {{ c.nombre}}</h4>
+            <div class="form-group">
+            <form method="post">
+                {% csrf_token %}
+            <button type="submit" class="btn btn-info">eliminar</button>
+            </div>
+            </form>    
         {% endfor %}
         <br></br>
+            
     {% endif %} 
     
+    <h1>Borrar Categoria</h1>
+    <br><br>
+    <h3>Delete: {{ c.categoria}}</h3>
+    <div class="form-group">
+    <form method="post">
+        {% csrf_token %}
+    <button type="submit" class="btn btn-info">BorrarCategoria</button>
+    </div>
+    </form>
     <br></br>
     <tr></tr>
     <tr></tr>
     <br></br>
 
     
-    <h3>Comentarios</h3>
+    <center><h2>Comentarios</h2></center>
+    <br></br>
+    <br></br>
     {% if comentarios %}
-        <br></br>
-        <br></br>
+        
         {% for c in comentarios %}
-            <center><h4>{{c.comentario}}</h4></center>
+            
+            <form method="post" class="my-class"> 
+                <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar el comentario: {{c.comentario}}?</span></h6>
+                {% csrf_token %}
+                {{form | crispy}}
+                <input type="submit" class="btn mt-4" value="Eliminar" />
+                <br></br>
+            </form>
         {% endfor %}
         <br></br>
     {% endif %}
         
-    
+{% endif %}    
 {% endblock %}

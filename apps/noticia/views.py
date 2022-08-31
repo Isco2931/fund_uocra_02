@@ -138,3 +138,9 @@ def ListarCategoria(request):
         'categorias': categorias,
     }
     return render(request, 'noticia/listarCategoria.html', context)
+
+
+class DeleteCategoria(DeleteView):
+    model = Categoria
+    template_name = 'noticia/eliminarCategoria.html'
+    success_url = reverse_lazy('ListCategoria')

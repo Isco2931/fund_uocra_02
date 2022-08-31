@@ -3,6 +3,7 @@
  
 {% load crispy_forms_tags %}
 
+{% if user.is_authenticated %}
     <div class="add_comment">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -52,4 +53,4 @@
         </div>
         
     </div>
-
+{% endif %}

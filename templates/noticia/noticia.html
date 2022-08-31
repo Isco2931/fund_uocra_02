@@ -61,15 +61,18 @@
 
             <!-- ======= Comments Form ======= -->
             
-            <div class="row justify-content-center mt-5">
-              <div class="col-lg-12">
-                <h5 class="comment-title">Deje un comentario</h5>
-                
-                  {% include 'comentario/addComentario.html' %}
-                
+            {% if user.is_authenticated %}
+              <div class="row justify-content-center mt-5">
+                <div class="col-lg-12">
+                  <h5 class="comment-title">Deje un comentario</h5>
+                  
+                    {% include 'comentario/addComentario.html' %}
+                  
+                </div>
               </div>
-            </div>
-            
+            {% else %}
+              <h5 class="comment-title">Para Comentar se tiene que loguear</h5>
+            {% endif %}
             <!-- End Comments Form -->
 
           </div>

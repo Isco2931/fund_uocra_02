@@ -1,0 +1,13 @@
+{% load crispy_forms_tags %}
+{% if user.is_superuser %}
+<form method="post" class="my-class"> 
+    <h4 class="mb-4 pb-3">Eliminar Categoria</h4>
+        <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar la categoria: {{object.nombre}}?</span></h6>
+            {% csrf_token %}
+            {{form | crispy}}
+            <input type="submit" class="btn mt-4" value="Eliminar" />
+</form>
+	<a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
+{% else %}
+	<strong>  Usted no tiene los permisos necesarios para realizar esta acción</strong>	
+{% endif %}
