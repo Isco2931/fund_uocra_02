@@ -6,6 +6,9 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from .models import Noticia, Categoria
 from apps.comentario.models import Comentario
+from django.views.generic import View
+from apps.comentario.forms import CommentForm
+
 class AddNoticia(CreateView):
     model = Noticia
     fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
@@ -45,10 +48,8 @@ class DeleteNoticia(DeleteView):
     model = Noticia
     template_name = 'noticia/eliminarNoticia.html'
     success_url = reverse_lazy('Listar-Noticia')
-class DetailNoticia(DetailView):
-    model = Noticia
-    template_name = 'noticia/detailNoticia.html'
-################# Contexto Categorias repo Chuki ####################
+
+################# Contextos ####################
 
 def MostrarCategorias(request):
     categorias = Categoria.objects.all()
@@ -64,13 +65,33 @@ def MostrarComentarios(request):
     }
     return ( context)
 
+################# Comentario Christian ####################
+class ListarNoticia1(View):
+    def get(self, request, pk, *args, **kwargs):
+        noticia = Noticia.objects.get(pk=pk)
+        form = CommentForm()
+        comentarios = Comentario.objects.filter(noticia=pk).order_by('-fecha') # agregar - para ordenar de forma descendente
+        context = {
+            'noticia': noticia,
+            'form': form,
+            'comentarios': comentarios,
+            }
+        return render(request, 'noticia/noticia.html', context)
 
-################# Comentario repo Gaston ####################
+    def post(self, request, pk, *args, **kwargs):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            noticia = Noticia.objects.get(pk=pk)
+            form.instance.autor = request.user
+            form.instance.noticia = noticia
+            form.save()
+            return redirect('Detail-Noticia', pk=pk)
 
-class CreateComentario(CreateView):
-    model = Comentario
-    template_name = 'comentario/addComentario2.html'
-    fields = ['autor','noticia','comentario']
-    success_url = reverse_lazy('Listar-Noticia')
+        comentarios = Comentario.objects.filter(noticia=pk).order_by('-fecha')
 
-
+        context = {
+            'noticia': noticia,
+            'form': form,
+            'comentarios': comentarios
+        }
+        return render(request, 'noticia/noticia.html', context)

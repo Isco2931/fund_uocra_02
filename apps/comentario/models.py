@@ -6,7 +6,7 @@ from apps.usuario.models import Usuario
 
 class Comentario(models.Model):
 
-    autor = models.CharField(max_length=20, null=False)
+    autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     noticia = models.ForeignKey(Noticia, on_delete=models.CASCADE)
     comentario = models.TextField(max_length=250, null=False)
     fecha = models.DateTimeField(auto_now_add=True)

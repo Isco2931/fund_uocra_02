@@ -1,7 +1,7 @@
 {% extends 'base.html'  %}
-{% load static %}
 {% block contenido %}
-
+{% load static %}
+{% if noticia %}
   <main id="main">
 
     <section class="single-post-content">
@@ -12,12 +12,12 @@
             <!-- ======= Single Post Content ======= -->
 
             <div class="single-post">
-              <div class="post-meta"><span class="date">{{object.categoria}}</span> <span class="mx-1">&bullet;</span> <span>{{object.fecha}}</span></div>
-              <h1 class="mb-5">{{object.titulo}}</h1>
-              <p><span class="firstcharacter"></span>{{object.texto}}</p>
+              <div class="post-meta"><span class="date">{{noticia.categoria}}</span> <span class="mx-1">&bullet;</span> <span>{{noticia.fecha}}</span></div>
+              <h1 class="mb-5">{{noticia.titulo}}</h1>
+              <p><span class="firstcharacter"></span>{{noticia.texto}}</p>
 
               <figure class="my-4">
-                <img src="{{object.imagen.url}}" alt="" class="img-fluid">
+                <img src="{{noticia.imagen.url}}" alt="" class="img-fluid">
               </figure>
 
             </div><!-- End Single Post Content -->
@@ -28,11 +28,15 @@
             <h5 class="comment-title py-4">Comentarios</h5>
             {% if comentarios %}
             {% for coment in comentarios %}
-            {% if coment.noticia.id == object.id %}                        
+            {% if coment.noticia.id == noticia.id %}                        
             <div class="comment d-flex mb-4">
               <div class="flex-shrink-0">
                 <div class="avatar avatar-sm rounded-circle">
-                  <img class="avatar-img" src="static/assets/img/person-5.jpg" alt="" class="img-fluid">
+                  {% if coment.autor.imagen.url %}
+                    <img class="avatar-img" src="{{coment.autor.imagen.url}}" alt="" class="img-fluid">
+                  {%  else  %}
+                    <img class="avatar-img" src="{% static 'usuario/logouser.png' %}" alt="" class="img-fluid">
+                  {% endif %}
                 </div>
               </div>
               <div class="flex-grow-1 ms-2 ms-sm-3">
@@ -45,25 +49,20 @@
                 </div>
               </div>
             </div>
-
             {% endif %}
             {% endfor %}            
             {% else %}
             <a>No hay comentarios</a>
             {% endif %}
           </div>
-
              <!--======= End Comments ======= -->
 
-            <!-- ======= Comments Form ======= -->
-            
+            <!-- ======= Comments Form ======= -->            
             <div class="row justify-content-center mt-5">
-              <div class="col-lg-12">
                 <h5 class="comment-title">Deje un comentario</h5>
-                <div class="row">
-                <a href="{% url 'add_comment' object.pk %}" class="btn mt-4">Agregar comentario</a>
-                </div>
-              </div>
+                                        
+                        {% include 'comentario/addComment.html' %}
+
             </div>
             
             <!-- End Comments Form -->
@@ -86,26 +85,14 @@
                 {% endif %}
               </div><!-- End Categories -->
               
-              <!--
-              <div class="aside-block">
-                <h3 class="aside-title">Tags</h3>
-                <ul class="aside-tags list-unstyled">
-                  <li><a href="category.html">Business</a></li>
-                  <li><a href="category.html">Culture</a></li>
-                  <li><a href="category.html">Sport</a></li>
-                  <li><a href="category.html">Food</a></li>
-                  <li><a href="category.html">Politics</a></li>
-                  <li><a href="category.html">Celebrity</a></li>
-                  <li><a href="category.html">Startups</a></li>
-                  <li><a href="category.html">Travel</a></li>
-                </ul>
-              </div> End Tags -->
+              
             </div>
 
           </div>
         </div>
       </div>
     </section>
-  </main><!-- End #main -->
 
+  </main><!-- End #main -->
+{% endif %}
 {% endblock %}
