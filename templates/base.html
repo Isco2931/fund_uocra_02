@@ -75,27 +75,25 @@
           {% endif %}
           </li>
         
-          <li><a href="{% url 'about' %}">Acerca de Nosotros</a></li>
+          <li><a href="{% url 'about' %}">Nosotros</a></li>
           <li><a href="{% url 'contact' %}">Contáctanos</a></li>
-          {% if user.is_authenticated %}
-          <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar Sesión</a></li>
-            {%else%}
-            <li class="dropdown"><a href="#"><span>Mi cuenta</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>             
-            <ul>
+          <li class="dropdown"><a href="#"><span>Mi cuenta</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>          
+            {% if user.is_authenticated %}
+              <ul>
+                <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar Sesión</a></li>     
+                {% if user.is_superuser %}
+                  <li><a href="/noticia/addNoticia/">Crear noticia</a></li>
+                  <li><a href="/noticia/addCategoria/">Crear Categoría</a></li>
+                  <li><a href="/admin/">Administrar</a></li>
+                {% endif %}
+              </ul>
+            {%else%}           
+              <ul>
                 <li><a href="{% url 'apps.usuario:login' %}">Iniciar Sesión</a></li>
                 <li><a href="/ingresar/registro/">Registrarme</a></li>
-            </ul>
-        </li>
-          {%endif%}
-            {% if user.is_superuser %}
-            <li class="dropdown"><a href="#"><span>Administración</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-              <ul>
-                <li><a href="/noticia/addNoticia/">Crear noticia</a></li>
-                <li><a href="/noticia/addCategoria/">Crear Categoría</a></li>
-                <li><a href="/admin/">Administrar</a></li>
               </ul>
-            </li>
-           {% endif %}
+          {%endif%}
+          </li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -132,7 +130,7 @@
       <div class="container">
         <div class="row g-5">
           <div class="col-lg-4">
-            <h3 class="footer-heading">Acerca de nosotros</h3>
+            <h3 class="footer-heading">Nosotros</h3>
             <p>La Fundación UOCRA es una ONG que pertenece a la Red Social UOCRA. Nació en octubre de 1993 bajo el nombre de Fundación de Educación y Capacitación para los Trabajadores de la Construcción (FEyCTC) pero en 2007 cambió a la denominación actual. </p>
             <p><a href="{% url 'about' %}" class="footer-link-more">Leer más.</a></p>
           </div>
@@ -141,7 +139,7 @@
             <ul class="footer-links list-unstyled">
               <li><a href="{% url 'index' %}"><i class="bi bi-chevron-right"></i> Inicio</a></li>
               <li><a href="/noticia/listarNoticia/"><i class="bi bi-chevron-right"></i> Noticias</a></li>
-              <li><a href="{% url 'about' %}"><i class="bi bi-chevron-right"></i> Acerca de Nosotros</a></li>
+              <li><a href="{% url 'about' %}"><i class="bi bi-chevron-right"></i> Nosotros</a></li>
               <li><a href="{% url 'contact' %}"><i class="bi bi-chevron-right"></i> Contacto</a></li>
             </ul>
           </div>
