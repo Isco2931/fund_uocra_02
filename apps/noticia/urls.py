@@ -12,5 +12,5 @@ urlpatterns = [
     path('listarCategoria/', views.ListarCategoria, name='ListCategoria'),
     path('notice/<int:pk>/addComment/', views.CreateComentario.as_view(), name='add_comment'),
     path('detail/<int:pk>', views.ListarNoticia.as_view(), name='Detail-Noticia'),
-    path('eliminarCategoria/<int:pk>', views.DeleteNoticia.as_view(), name='Eliminar-Categoria'),
+    path('eliminarCategoria/<int:pk>', views.DeleteCategoria.as_view(), name='Eliminar-Categoria'),
 ]

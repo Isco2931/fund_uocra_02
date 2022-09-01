@@ -15,7 +15,7 @@
 
 							{% else %}							
                             <form method="post" class="my-class" action= "/ingresar/login/"> <!---->
-                            	<h4 class="mb-4 pb-3">Ingresar</h4>
+                            	<h1 class="mb-4 pb-3">Ingresar</h1>
 									{% csrf_token %}
 									{{form | crispy}}
                                     <input type="submit" class="btn mt-4" value="Iniciar Sesión" />

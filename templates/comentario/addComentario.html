@@ -1,6 +1,6 @@
 
 {% load static %}
- 
+{% block contenido %} 
 {% load crispy_forms_tags %}
 
 {% if user.is_authenticated %}
@@ -54,3 +54,4 @@
         
     </div>
 {% endif %}
+{% endblock %}

@@ -25,7 +25,7 @@
             <!-- ======= Comments ======= -->
             
           <div class="comments">
-            <h5 class="comment-title py-4">Comentarios</h5>
+            <h3 class="comment-title py-4">Comentarios</h3>
             {% if comentarios %}
             {% for coment in comentarios %}
             {% if coment.noticia.id == noticia.id %}                        
@@ -33,7 +33,7 @@
               <div class="flex-shrink-0">
                 <div class="avatar avatar-sm rounded-circle">
                   {% if coment.usuario.imagen.url %}
-                    <img class="avatar-img" src="{{coment.usuario.imagen.url}}" alt="" class="img-fluid">
+                    <img class="avatar-img" src="{{coment.usuario.imagen.url}}" alt="" class="img-fluid" >
                   {%  else  %}
                     <img class="avatar-img" src="{% static 'usuario/logouser.png' %}" alt="" class="img-fluid">
                   {% endif %}
@@ -63,15 +63,18 @@
             
             {% if user.is_authenticated %}
               <div class="row justify-content-center mt-5">
-                <div class="col-lg-12">
-                  <h5 class="comment-title">Deje un comentario</h5>
+                <div class="col-lg-30">
+                  <h3 class="comment-title">Deje su comentario</h3>
                   
                     {% include 'comentario/addComentario.html' %}
                   
                 </div>
               </div>
             {% else %}
-              <h5 class="comment-title">Para Comentar se tiene que loguear</h5>
+              <br>
+              <h5 class="comment-title">Para Comentar tiene que Iniciar Sesión</h5>
+              <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:login' %}" >Iniciar Sesión</a>
+              <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:Registro-Usuario' %}" >Registrarse</a>
             {% endif %}
             <!-- End Comments Form -->
 

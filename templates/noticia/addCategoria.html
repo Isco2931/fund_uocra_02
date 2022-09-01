@@ -11,12 +11,25 @@
 						<div class="section text-center">
 							{% if user.is_superuser %}
                         	<form method="post" class="my-class" action= "/noticia/addCategoria/"> <!---->
-                                <h4 class="mb-4 pb-3">Crear Categoría</h4>
+                                <h1 class="mb-4 pb-3">Crear Categoría</h1>
 									{% csrf_token %}
 									{{form | crispy}}
                                 <input type="submit" class="btn mt-4" value="Crear" />
-                            </form>
 								<a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
+								
+								<br></br>
+								<br></br>
+								<center><h1>Categorias</h1></center>
+								<br></br>
+								{% for c in categorias %}
+									<h4>Categoria: {{ c.nombre}}</h4>
+									<a  class='btn' href="{% url 'Eliminar-Categoria' c.id %}">Eliminar</a>
+								
+								{% endfor %}
+                            </form>
+
+							
+								
 							{% else %}
 								<strong>  Usted no tiene los permisos necesarios para realizar esta acción</strong>	
 							{% endif %}	

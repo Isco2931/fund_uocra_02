@@ -143,4 +143,4 @@ def ListarCategoria(request):
 class DeleteCategoria(DeleteView):
     model = Categoria
     template_name = 'noticia/eliminarCategoria.html'
-    success_url = reverse_lazy('ListCategoria')
+    success_url = reverse_lazy('categoria')
