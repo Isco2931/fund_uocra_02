@@ -13,7 +13,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'fund_uocra_db',
         'USER': 'root',
-        'PASSWORD': 'Futuro.2022',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '',
     }
