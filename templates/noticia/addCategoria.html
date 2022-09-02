@@ -17,15 +17,17 @@
                                 <input type="submit" class="btn mt-4" value="Crear" />
                             </form>
 								<a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
-								<br></br>
-								<br></br>
-								<h4 class="mb-4 pb-3">Eliminar Categoría</h4>								
-								<br></br>
-								{% for c in categorias %}
-									<h5>Categoria: {{ c.nombre}}</h5>
-									<a  class="btn mt-4" href="{% url 'Eliminar-Categoria' c.id %}">Eliminar</a>
-								
-								{% endfor %}
+								{% if categorias %}
+									<br></br>
+									<br></br>
+									<h4 class="mb-4 pb-3">Eliminar Categoría</h4>								
+									<br></br>
+									{% for c in categorias %}
+										<h5>Categoria: {{ c.nombre}}</h5>
+										<a  class="btn mt-4" href="{% url 'Eliminar-Categoria' c.id %}">Eliminar</a>
+									
+									{% endfor %}
+								{% endif %}
 
 							{% else %}
 								<strong>  Usted no tiene los permisos necesarios para realizar esta acción</strong>	

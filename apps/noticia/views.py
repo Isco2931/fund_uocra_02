@@ -30,7 +30,7 @@ def ListarNoticiaPorCategoria (request, categoria):
 class DeleteCategoria(DeleteView):
     model = Categoria
     template_name = 'noticia/eliminarCategoria.html'
-    success_url = reverse_lazy('addCategoria')
+    success_url = reverse_lazy('index')
     
 
 ################# NOTICIAS ####################
