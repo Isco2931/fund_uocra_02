@@ -46,6 +46,14 @@
                 </div>
                 <div class="comment-body">
                   {{  coment.comentario }}
+
+                  {% if user.is_superuser %}
+                  <div class="name">
+                    <ul>
+                      <li><a href="{% url 'Eliminar-Comentario' coment.id %}">Eliminar</a></li>
+                    </ul>
+                  </div>                       
+                 {% endif %}
                 </div>
               </div>
             </div>

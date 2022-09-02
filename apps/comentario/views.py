@@ -2,6 +2,7 @@ from ast import Delete
 from .models import Comentario
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, DeleteView
+from django.urls import reverse_lazy
 
 class MostrarComentarios(ListView):
     model = Comentario
@@ -18,3 +19,8 @@ class AddComentario(DetailView):
 
 def Comentarios(request):
     return render(request,'comentario/listarComentarios.html')
+
+class DeleteComentario(DeleteView):
+    model = Comentario
+    template_name = 'comentario/eliminarComentario.html'
+    success_url = reverse_lazy('Listar-Noticia')
