@@ -52,7 +52,7 @@
         <!-- Uncomment the line below if you also wish to use an image logo -->
 
       <img src="{% static 'logo-fundacion-uocra.png' %}" alt="">
-      <a><small> Bienvenido <br><center><b>{{ user.username }}</b></center></small></a>
+      <a><small><center>Bienvenido</center><center><b>{{ user.username }}</b></center></small></a>
 
       <!-- Uncomment the line below if you also wish to use an a title name  
       <h1>Fundación UOCRA</h1>--> 
@@ -61,38 +61,24 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="{% url 'index' %}">Inicio</a></li>
-          <li class="dropdown"><a href="/noticia/listarNoticia/"><span>Noticias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-          {% if categorias %}
-          <ul>
-            {% for item in categorias %}             
-                <li><a href="/noticia/listarCategoria/{{item.nombre}}">{{item.nombre}}</a></li>            
-            
-            {% endfor %}
-          </ul>
-          {% endif %}
+          <li><a href="/noticia/listarNoticia/">Noticias</a> 
+          
           </li>
         
           <li><a href="{% url 'about' %}">Nosotros</a></li>
           {% comment %} <li><a href="{% url 'contact' %}">Contactanos</a></li> {% endcomment %}
           {% if user.is_authenticated %}
+          {% if user.is_superuser %}
+            <li><a href="/admin/">Administración</a></li>
+          {% endif %}
           <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar Sesión</a></li>
             {%else%}
-            <li class="dropdown"><a href="#"><span>Mi cuenta</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>             
-            <ul>
-                <li><a href="{% url 'apps.usuario:login' %}">Iniciar Sesión</a></li>
-                <li><a href="/ingresar/registro/">Registrarme</a></li>
-            </ul>
-        </li>
+            <li><a href="{% url 'apps.usuario:login' %}">Iniciar Sesión</a></li>
+            <li><a href="{% url 'apps.usuario:Registro-Usuario' %}">Registrarme</a></li>            
+            
+          </li>
           {%endif%}
-            {% if user.is_superuser %}
-            <li class="dropdown"><a href="#"><span>Administración</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-              <ul>
-                <li><a href="/noticia/addNoticia/">Crear noticia</a></li>
-                <li><a href="/noticia/addCategoria/">Crear Categoría</a></li>
-                <li><a href="/admin/">Administrar</a></li>
-              </ul>
-            </li>
-           {% endif %}
+            
         </ul>
       </nav><!-- .navbar -->
 

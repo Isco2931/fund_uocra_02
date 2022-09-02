@@ -120,6 +120,11 @@ class CreateComentario(CreateView):
     fields = ['usuario','noticia','comentario', ]
     success_url = reverse_lazy('Listar-Noticia')
 
+class DeleteComentario(DeleteView):
+    model = Comentario
+    template_name = 'comentario/eliminarComentario.html'
+    success_url = reverse_lazy('Listar-Noticia')
+
 
 
 ########### CATEGORIAS ################################################
@@ -132,15 +137,12 @@ class AddCategoria(CreateView):
     success_url = reverse_lazy('categoria')
 
 
-def ListarCategoria(request):
-    categorias = Categoria.objects.all()
-    context = {
-        'categorias': categorias,
-    }
-    return render(request, 'noticia/listarCategoria.html', context)
-
-
 class DeleteCategoria(DeleteView):
     model = Categoria
     template_name = 'noticia/eliminarCategoria.html'
     success_url = reverse_lazy('categoria')
+
+
+
+
+

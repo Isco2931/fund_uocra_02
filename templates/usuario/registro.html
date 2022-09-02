@@ -12,12 +12,13 @@
 						<div class="center-wrap">
 							<div class="section text-center">
                                 <form method="post" class="my-class">
-									<h4 class="mb-4 pb-3">Regístrate</h4>
-                                    {% csrf_token %}
-									{{form|crispy}}                    
-                            		<input type="submit" class="btn mt-4" value="Registrarme" />
+									
+									<h3>REGISTRATE</h3>
+                                    	{% csrf_token %}
+										{{form|crispy}}                    
+                            			<input type="submit" class="btn mt-4" value="Registrarme" /> <a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
                                 </form>
-									<a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
+									
 								
                             </div>
 						</div>

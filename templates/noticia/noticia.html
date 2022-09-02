@@ -28,14 +28,15 @@
             <h3 class="comment-title py-4">Comentarios</h3>
             {% if comentarios %}
             {% for coment in comentarios %}
-            {% if coment.noticia.id == noticia.id %}                        
+            {% if coment.noticia.id == noticia.id %}
             <div class="comment d-flex mb-4">
               <div class="flex-shrink-0">
                 <div class="avatar avatar-sm rounded-circle">
                   {% if coment.usuario.imagen.url %}
                     <img class="avatar-img" src="{{coment.usuario.imagen.url}}" alt="" class="img-fluid" >
-                  {%  else  %}
-                    <img class="avatar-img" src="{% static 'usuario/logouser.png' %}" alt="" class="img-fluid">
+                    {% if user.is_superuser %}
+                    <a href="{% url 'Eliminar-Comentario' coment.id %}"><br>Eliminar</a>
+                    {% endif %}
                   {% endif %}
                 </div>
               </div>
@@ -84,15 +85,15 @@
             <div class="aside-block">
               
               <div class="aside-block">
-                <h3 class="aside-title">Categorias</h3>
+                <h3>Categorias</h3>
                 {% if categorias %}
                 {% for item in categorias %}
                     <ul class="aside-links list-unstyled">
-                        <li><a href="/noticia/listarCategoria/{{item.nombre}}"><i class="bi bi-chevron-right"></i> {{item.nombre}}</a></li>
+                    <li><a href="/noticia/listarCategoria/{{item.nombre}}"><i class="bi bi-chevron-right"></i> {{item.nombre}}</a></li>
                     </ul>
                 {% endfor %}
                 {% else %}
-                    <h1>Aquí no paso nada caballeros</h1>
+                    <h1>No hay Noticias Disponibles</h1>
                 {% endif %}
               </div><!-- End Categories -->
               

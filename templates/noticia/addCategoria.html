@@ -14,16 +14,15 @@
                                 <h1 class="mb-4 pb-3">Crear Categoría</h1>
 									{% csrf_token %}
 									{{form | crispy}}
-                                <input type="submit" class="btn mt-4" value="Crear" />
-								<a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
+                                <input type="submit" class="btn mt-4" value="Crear Categoria" /> 
+								<a href="{% url 'Listar-Noticia' %}" class="btn mt-4">Cancelar</a>
 								
 								<br></br>
 								<br></br>
 								<center><h1>Categorias</h1></center>
 								<br></br>
 								{% for c in categorias %}
-									<h4>Categoria: {{ c.nombre}}</h4>
-									<a  class='btn' href="{% url 'Eliminar-Categoria' c.id %}">Eliminar</a>
+								 <h3>{{ c.nombre}} <a  class='btn' href="{% url 'Eliminar-Categoria' c.id %}">Eliminar</a></h3>
 								
 								{% endfor %}
                             </form>

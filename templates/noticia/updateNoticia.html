@@ -14,9 +14,9 @@
                                 <h4 class="mb-4 pb-3">Modificar Noticia</h4>	
 									{% csrf_token %}
 									{{form | crispy}}
-                                    <input type="submit" class="btn mt-4" value="Modificar" />
+                                    <input type="submit" class="btn mt-4" value="Modificar" /> <a href="{% url 'Listar-Noticia' %}" class="btn mt-4">Cancelar</a>
                             </form>
-								<a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
+								
 							{% else %}
 								<strong> Usted no tiene los permisos necesarios para realizar esta acción</strong>	
 							{% endif %}

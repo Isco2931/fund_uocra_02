@@ -1,4 +1,4 @@
-{% extends 'base.html'  %}
+{% comment %} {% extends 'base.html'  %}
 {% load static %}
 {% block contenido %}  
 {% load crispy_forms_tags %}
@@ -11,12 +11,12 @@
 						<div class="section text-center">
 							{% if user.is_superuser %}
                             <form method="post" class="my-class" action= "/noticia/addNoticia/"> 
-                                <h4 class="mb-4 pb-3">Crear Noticia</h4>
+                                <h4 class="mb-4 pb-3">Crear Notasdf dfa fad fasdicia</h4>
 									{% csrf_token %}
 									{{form | crispy}}
                                     <input type="submit" class="btn mt-4" value="Crear" />
                             </form>
-							<a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
+							<a href="{% url 'Listar-Noticia' %}" class="btn mt-4">Cancelar</a>
 							{% else %}
 							<strong>  Usted no tiene los permisos necesarios para realizar esta acción</strong>	
 							{% endif %}
@@ -27,4 +27,4 @@
 	    </div>
 	</div>
 </main><!-- End #main -->
-{% endblock %}
+{% endblock %} {% endcomment %}

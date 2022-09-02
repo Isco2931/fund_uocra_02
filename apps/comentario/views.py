@@ -19,10 +19,7 @@ class AddComentario(DetailView):
         context["comentarios"] = Comentario.objects.all()
         return context
 
-# class DeleteComentario(DeleteView):
-#     model = Comentario
-#     template_name = 'comentario/eliminarComentario.html'
-#     success_url = reverse_lazy('Listar-Noticia')
+
 
 def Comentarios(request):
     return render(request,'comentario/listarComentarios.html')

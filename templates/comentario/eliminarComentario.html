@@ -11,11 +11,11 @@
 						<div class="section text-center">
 							{% if user.is_superuser %}
                             <form method="post" class="my-class"> 
-                                <h1 class="mb-4 pb-3">Eliminar Noticia</h1>
+                                <h1 class="mb-4 pb-3">Eliminar Comentario</h1>
 								<br>
-                                     <h3 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar la publicación: {{object.titulo}}?</span></h3>
+                                     <h3 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar el Comentario: {{object.comentario}}?</span></h3>
 										{% csrf_token %}
-										{{form | crispy}}
+										{{form|crispy}}
                                     	<input type="submit" class="btn mt-4" value="Eliminar" /> <a href="{% url 'Listar-Noticia' %}" class="btn mt-4">Cancelar</a>
                             </form>
 							

@@ -17,10 +17,11 @@ a {
 a:hover {
 	text-decoration: none;
 }
-.footer {
+#footer {
   overflow: hidden;
   background-color: rgb(12,83,131);
   font-size: 16px;
+  color: aliceblue;
 }
 
 .link {

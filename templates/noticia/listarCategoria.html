@@ -1,46 +1,8 @@
-{% extends 'base.html'  %}
+{% comment %} {% extends 'base.html'  %}
 {% load static %}
 {% block contenido %}
 {% load crispy_forms_tags %}
 {% if user.is_superuser %}  
-
-    {% if categorias %}
-        <br></br>
-        <br></br>
-        <center><h2>Categorias</h2></center>
-        <br></br>
-        {% for c in categorias %}
-            
-            {% comment %} <form method="post" class="my-class"> 
-                <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar la categoria: {{c.nombre}}?</span></h6>
-                {% csrf_token %}
-                {{form | crispy}}
-                <input type="submit" class="btn mt-4" value="Modificar" />
-                <input type="submit" class="btn mt-4" value="Eliminar" />
-                <br></br>
-            </form> {% endcomment %}
-            <h4>Categoria: {{ c.nombre}}</h4>
-            
-            <a  class='btn' href="{% url 'Eliminar-Categoria' c.id %}">Eliminar</a>
-           
-        {% endfor %}
-        <br></br>
-            
-    {% endif %} 
-    
-    {% comment %} <h1>Borrar Categoria</h1>
-    <br><br>
-    <h3>Delete: {{ c.categoria}}</h3>
-    <div class="form-group">
-    <form method="post">
-        {% csrf_token %}
-    <button type="submit" class="btn btn-info">BorrarCategoria</button>
-    </div>
-    </form> {% endcomment %}
-    <br></br>
-    <tr></tr>
-    <tr></tr>
-    <br></br>
 
     
     <center><h2>Comentarios</h2></center>
@@ -51,15 +13,18 @@
         {% for c in comentarios %}
             
             <form method="post" class="my-class"> 
-                <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar el comentario: {{c.comentario}}?</span></h6>
+                <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar el comentario: <br>{{c.comentario}}?</span></h6>
+                <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar el noticia: {{c.noticia.id}}?</span></h6>
+                <h6 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar el usuario: {{c.usuario.nombre}}?</span></h6>
                 {% csrf_token %}
                 {{form|crispy}}
-                <input type="submit" class="btn mt-4" value="Eliminar" />
+                <a  class='btn' href="{% url 'Eliminar-Comentario' c.id %}">Eliminar</a>
                 <br></br>
             </form>
         {% endfor %}
         <br></br>
     {% endif %}
-        
+
+
 {% endif %}    
-{% endblock %}
+{% endblock %} {% endcomment %}

@@ -16,12 +16,13 @@
 							{% else %}							
                             <form method="post" class="my-class" action= "/ingresar/login/"> <!---->
                             	<h1 class="mb-4 pb-3">Ingresar</h1>
+								<br>
 									{% csrf_token %}
 									{{form | crispy}}
-                                    <input type="submit" class="btn mt-4" value="Iniciar Sesión" />
+                                    <input type="submit" class="btn mt-4" value="Iniciar Sesión" /> <a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
 
                             </form>
-								<a href="{% url 'index' %}" class="btn mt-4">Cancelar</a>
+								
                                 <p class="mb-0 mt-4 text-center"><a href="{% url 'password_reset' %}" class="link">¿Olvidaste tu contraseña?</a></p>							
 							{% endif %}
 						</div>

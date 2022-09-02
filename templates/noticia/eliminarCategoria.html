@@ -12,12 +12,13 @@
 							{% if user.is_superuser %}
                             <form method="post" class="my-class"> 
                                 <h1 class="mb-4 pb-3">Eliminar Categoria</h1>
-                                     <h4 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar la Categoria: {{object.nombre}}?</span></h4>
+								<br>
+                                     <h3 class="mb-0 pb-3"><span>¿Esta seguro que desea eliminar la Categoria: {{object.nombre}}?</span></h3>
 										{% csrf_token %}
 										{{form|crispy}}
-                                    	<input type="submit" class="btn mt-4" value="Eliminar" />
+                                    	<input type="submit" class="btn mt-4" value="Eliminar" /> <a href="{% url 'categoria' %}" class="btn mt-4">Cancelar</a>
                             </form>
-							<a href="{% url 'categoria' %}" class="btn mt-4">Cancelar</a>
+							
 							{% else %}
 								<strong>  Usted no tiene los permisos necesarios para realizar esta acción</strong>	
 							{% endif %}

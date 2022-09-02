@@ -35,7 +35,7 @@
                     </div>
                   {% endfor %}
                   {% else %}
-                    <h1>Aquí no paso nada caballeros</h1>
+                    <h1>No hay Noticias Disponibles</h1>
                 {% endif %}
               </div>
 
@@ -44,15 +44,21 @@
             <div class="aside-block">
               
             <div class="aside-block">
-              <h3 class="aside-title">Categorias</h3>
-              {% if categoria %}
+              {% if user.is_superuser %}
+              <a  class='btn' href="/noticia/addNoticia/">Crear noticia</a>
+              <br></br>
+              <a  class='btn' href="/noticia/addCategoria/">Crear Categoría</a>
+              <br></br>
+              {% endif %}
+              <h3>Categorias</h3>
+                {% if categoria %}
                   {% for c in categoria %}
                       <ul class="aside-links list-unstyled">
                           <li><a href="/noticia/listarCategoria/{{c.nombre}}"><i class="bi bi-chevron-right"></i> {{c.nombre}}</a></li>
                       </ul>
                   {% endfor %}
               {% else %}
-                  <h1>Aquí no paso nada caballeros</h1>
+                  <h1>No hay Noticias Disponibles</h1>
               {% endif %}
             </div><!-- End Categories -->
 

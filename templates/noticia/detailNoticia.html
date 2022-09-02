@@ -1,4 +1,4 @@
-{% extends 'base.html'  %}
+{% comment %} {% extends 'base.html'  %}
 {% load static %}
 {% block contenido %}
 
@@ -86,7 +86,7 @@
                     </ul>
                 {% endfor %}
                 {% else %}
-                    <h1>Aquí no paso nada caballeros</h1>
+                    <h1>No hay Noticias Disponibles</h1>
                 {% endif %}
               </div><!-- End Categories -->
               
@@ -99,4 +99,4 @@
     </section>
   </main><!-- End #main -->
 
-{% endblock %}
+{% endblock %} {% endcomment %}
