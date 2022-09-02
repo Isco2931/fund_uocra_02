@@ -9,26 +9,13 @@ from apps.comentario.models import Comentario
 from django.views.generic import View
 from apps.comentario.forms import CommentForm
 
-class AddNoticia(CreateView):
-    model = Noticia
-    fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
-    template_name = 'noticia/addNoticia.html'
-    success_url = reverse_lazy('index')
+################# CATEGORIAS ####################
+
 class AddCategoria(CreateView):
     model = Categoria
     fields = ['nombre']
     template_name = 'noticia/addCategoria.html'
     success_url = reverse_lazy('index')
-
-def ListarNoticia (request):
-    noticia = Noticia.objects.all()
-    categoria = Categoria.objects.all()
-    context = {
-        'noticia': noticia,
-        'categoria': categoria,
-
-    }
-    return render(request, 'noticia/listarNoticia.html', context)
     
 def ListarNoticiaPorCategoria (request, categoria):
     categoria2 = Categoria.objects.filter(nombre=categoria)
@@ -39,6 +26,30 @@ def ListarNoticiaPorCategoria (request, categoria):
         'categoria': categoria,
     }
     return render(request, 'noticia/category.html', context)
+
+class DeleteCategoria(DeleteView):
+    model = Categoria
+    template_name = 'noticia/eliminarCategoria.html'
+    success_url = reverse_lazy('addCategoria')
+    
+
+################# NOTICIAS ####################
+
+class AddNoticia(CreateView):
+    model = Noticia
+    fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
+    template_name = 'noticia/addNoticia.html'
+    success_url = reverse_lazy('index')
+def ListarNoticia (request):
+    noticia = Noticia.objects.all()
+    categoria = Categoria.objects.all()
+    context = {
+        'noticia': noticia,
+        'categoria': categoria,
+
+    }
+    return render(request, 'noticia/listarNoticia.html', context)
+
 class UpdateNoticia(UpdateView):
     model = Noticia
     fields = ['autor', 'titulo', 'texto', 'categoria', 'imagen']
@@ -49,23 +60,8 @@ class DeleteNoticia(DeleteView):
     template_name = 'noticia/eliminarNoticia.html'
     success_url = reverse_lazy('Listar-Noticia')
 
-################# Contextos ####################
+################# COMENTARIOS ####################
 
-def MostrarCategorias(request):
-    categorias = Categoria.objects.all()
-    context = {
-        "categorias": categorias,
-    }
-    return context
-
-def MostrarComentarios(request):
-    comentarios = Comentario.objects.all()
-    context = {
-        "comentarios": comentarios,
-    }
-    return ( context)
-
-################# Comentario Christian ####################
 class ListarNoticia1(View):
     def get(self, request, pk, *args, **kwargs):
         noticia = Noticia.objects.get(pk=pk)
@@ -95,3 +91,19 @@ class ListarNoticia1(View):
             'comentarios': comentarios
         }
         return render(request, 'noticia/noticia.html', context)
+
+    ################# CONTEXTOS ####################
+
+def MostrarCategorias(request):
+    categorias = Categoria.objects.all()
+    context = {
+        "categorias": categorias,
+    }
+    return context
+
+def MostrarComentarios(request):
+    comentarios = Comentario.objects.all()
+    context = {
+        "comentarios": comentarios,
+    }
+    return ( context)

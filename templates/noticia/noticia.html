@@ -2,11 +2,11 @@
 {% block contenido %}
 {% load static %}
 {% if noticia %}
-  <main id="main">
+<main id="main">
 
-    <section class="single-post-content">
-      <div class="container">
-        <div class="row">
+  <section class="single-post-content">
+    <div class="container">
+      <div class="row">
           <div class="col-md-9 post-content" data-aos="fade-up">
 
             <!-- ======= Single Post Content ======= -->
@@ -58,13 +58,22 @@
              <!--======= End Comments ======= -->
 
             <!-- ======= Comments Form ======= -->            
-            <div class="row justify-content-center mt-5">
-                <h5 class="comment-title">Deje un comentario</h5>
-                                        
-                        {% include 'comentario/addComment.html' %}
-
-            </div>
             
+            {% if user.is_authenticated %}
+              <div class="row justify-content-center mt-5">
+                <div class="col-lg-30">
+                  <h3 class="comment-title">Deje su comentario</h3>
+                  
+                    {% include 'comentario/addComment.html' %}
+                  
+                </div>
+              </div>
+            {% else %}
+              <br>
+              <h5 class="comment-title">Para poder comentar debe iniciar sesión</h5>
+              <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:login' %}" >Iniciar Sesión</a>
+              <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:Registro-Usuario' %}" >Registrarse</a>
+            {% endif %}
             <!-- End Comments Form -->
 
           </div>
@@ -89,10 +98,10 @@
             </div>
 
           </div>
-        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main><!-- End #main -->
+</main><!-- End #main -->
 {% endif %}
 {% endblock %}
